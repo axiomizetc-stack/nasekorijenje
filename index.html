@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="bs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Naše korijenje | Priče koje žive zauvijek</title>
+    <meta
+      name="description"
+      content="Naše korijenje je knjiga-dnevnik za porodične priče. Mama, Tata i porodično izdanje. 24,90 €. Dostava u BiH, Hrvatsku i Srbiju."
+    />
+    <meta name="theme-color" content="#2f4a34" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@380;500;650&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#sadrzaj" data-i18n="skip">Preskoči na sadržaj</a>
+    <header class="site-header">
+      <a class="logo" href="#vrh">
+        <img src="images/logo.svg" alt="Naše korijenje" width="220" height="38" />
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" data-i18n-aria="nav.menu" aria-label="Meni">
+        <span></span><span></span>
+      </button>
+      <nav id="nav">
+        <a href="#vrh" data-i18n="nav.home">Početna</a>
+        <a href="#knjiga" data-i18n="nav.book">Knjiga</a>
+        <a href="#kolekcija" data-i18n="nav.collection">Kolekcija</a>
+        <a href="#prica" data-i18n="nav.story">Naša priča</a>
+        <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
+      </nav>
+      <div class="header-end">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="bs" aria-pressed="true">BS</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="header-cta" href="#kontakt" data-i18n="nav.order">Naruči knjigu</a>
+      </div>
+    </header>
+
+    <main id="sadrzaj">
+      <section class="hero" id="vrh">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero.kicker">Porodične priče · Uspomene · Generacije</p>
+          <h1 data-i18n="hero.title">Sačuvaj priče koje čine tvoju porodicu.</h1>
+          <p class="lead" data-i18n="hero.lead">
+            Poklonite mami, tati ili cijeloj kući prostor da ispišu svoj život — od djetinjstva i prvih ljubavi do uspomena koje žele ostaviti sljedećim generacijama.
+          </p>
+          <div class="actions">
+            <a class="btn btn-dark" href="#kontakt" data-i18n="hero.primary">Naruči svoj primjerak</a>
+            <a class="btn btn-line" href="#knjiga" data-i18n="hero.secondary">Pogledaj šta je unutra</a>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img src="images/mockup.jpg" alt="Knjiga Naše korijenje, tvrdi uvez" />
+        </figure>
+      </section>
+
+      <section class="features">
+        <article>
+          <span>✎</span>
+          <h3 data-i18n="f.1.title">Originalna pitanja</h3>
+          <p data-i18n="f.1.text">Pažljivo birana pitanja koja otvaraju sjećanja, a ne kopiraju tuđu knjigu.</p>
+        </article>
+        <article>
+          <span>▣</span>
+          <h3 data-i18n="f.2.title">Prostor za fotografije</h3>
+          <p data-i18n="f.2.text">Stranice za slike, djecu, roditelje i trenutke koje želite zadržati.</p>
+        </article>
+        <article>
+          <span>✎</span>
+          <h3 data-i18n="f.3.title">Poklon za cijeli život</h3>
+          <p data-i18n="f.3.text">Više od knjige: porodična riznica koja se prenosi.</p>
+        </article>
+        <article class="price-card">
+          <p data-i18n="price.label">Cijena</p>
+          <strong>24,90 €</strong>
+          <span data-i18n="price.meta">Tvrdi uvez · A5 format</span>
+          <a class="btn btn-dark" href="#kontakt" data-i18n="price.cta">Naruči odmah</a>
+        </article>
+      </section>
+
+      <section class="inside" id="knjiga">
+        <figure>
+          <img src="images/mockup.jpg" alt="Otvorene stranice knjige Naše korijenje" />
+        </figure>
+        <div>
+          <p class="eyebrow" data-i18n="inside.kicker">Šta te očekuje u knjizi</p>
+          <h2 data-i18n="inside.title">Pitanja koja otvaraju srce i vraćaju uspomene.</h2>
+          <p data-i18n="inside.text">
+            Naše korijenje nije prepisana tuđa knjiga. To je originalan prostor za priče na našem jeziku: djetinjstvo, ljubav, posao, vrijednosti i poruka sljedećima.
+          </p>
+          <ol class="questions">
+            <li data-i18n="q.1">Kako izgleda tvoje najranije sjećanje?</li>
+            <li data-i18n="q.2">Koji su tvoji najveći životni uspjesi?</li>
+            <li data-i18n="q.3">Šta te je oblikovalo kao osobu?</li>
+            <li data-i18n="q.4">Kako si upoznao/la partnera ili partnericu?</li>
+            <li data-i18n="q.5">Koja je najljepša uspomena iz djetinjstva?</li>
+            <li data-i18n="q.6">Koje vrijednosti želiš prenijeti djeci?</li>
+            <li data-i18n="q.7">Šta te naučilo najteže iskustvo?</li>
+            <li data-i18n="q.8">Koju poruku ostavljaš budućim generacijama?</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="chapters">
+        <p class="eyebrow" data-i18n="ch.kicker">Sadržaj</p>
+        <h2 data-i18n="ch.title">Osam poglavlja, jedan život.</h2>
+        <ol>
+          <li data-i18n="ch.1">Djetinjstvo i porodica</li>
+          <li data-i18n="ch.2">Škola i odrastanje</li>
+          <li data-i18n="ch.3">Ljubav i partnerstvo</li>
+          <li data-i18n="ch.4">Brak i porodica</li>
+          <li data-i18n="ch.5">Posao i životni put</li>
+          <li data-i18n="ch.6">Vrijednosti i životne lekcije</li>
+          <li data-i18n="ch.7">Posebne uspomene</li>
+          <li data-i18n="ch.8">Poruka za buduće generacije</li>
+        </ol>
+      </section>
+
+      <section class="gift" id="prica">
+        <div>
+          <p class="eyebrow" data-i18n="gift.kicker">Za majke, očeve, bake i djedove</p>
+          <h2 data-i18n="gift.title">Jedna priča. Mnogo generacija.</h2>
+          <p data-i18n="gift.text">
+            Prva knjiga je za mamu. Druga za tatu. Treća je porodična. Sve tri izgledaju kao ista kolekcija, a svaka ima svoj glas. Krenut ćemo malim tiražom i prodajom online.
+          </p>
+          <a class="btn btn-dark" href="#kontakt" data-i18n="gift.cta">Naruči svoj primjerak</a>
+        </div>
+        <figure>
+          <img src="images/mockup.jpg" alt="Detalj tvrdog uveza Naše korijenje" />
+        </figure>
+      </section>
+
+      <section class="collection" id="kolekcija">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="col.kicker">Kolekcija</p>
+          <h2 data-i18n="col.title">Tri knjige, jedan brend.</h2>
+          <p data-i18n="col.text">Ista linija, različite korice. Prvo izdanje je porodično. Mama i Tata dolaze zatim.</p>
+        </div>
+        <div class="col-grid">
+          <article class="soon">
+            <div class="cover cream"><span>Mama</span></div>
+            <h3 data-i18n="col.mama">Mama, ispričaj mi svoju priču</h3>
+            <p data-i18n="col.soon">U pripremi</p>
+          </article>
+          <article class="soon">
+            <div class="cover olive"><span>Tata</span></div>
+            <h3 data-i18n="col.tata">Tata, ispričaj mi svoju priču</h3>
+            <p data-i18n="col.soon">U pripremi</p>
+          </article>
+          <article>
+            <div class="cover linen"><span>Naše korijenje</span></div>
+            <h3>Naše korijenje</h3>
+            <p data-i18n="col.now">Dostupno za narudžbu · 24,90 €</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact" id="kontakt">
+        <div>
+          <p class="eyebrow" data-i18n="contact.kicker">Narudžba</p>
+          <h2 data-i18n="contact.title">Naruči knjigu porukom.</h2>
+          <p data-i18n="contact.text">
+            Obrazac otvara WhatsApp s već napisanom narudžbom. Dostava u BiH, Hrvatsku i Srbiju. Plaćanje po dogovoru.
+          </p>
+          <ul>
+            <li>WhatsApp <a href="https://wa.me/38761834552" target="_blank" rel="noopener noreferrer">061 834 552</a></li>
+            <li>E-pošta <a href="mailto:axiomizetc@gmail.com">axiomizetc@gmail.com</a></li>
+          </ul>
+        </div>
+        <form class="order-form" id="order-form" novalidate>
+          <label>
+            <span data-i18n="form.name">Ime</span>
+            <input name="name" type="text" autocomplete="name" required data-i18n-placeholder="form.namePh" placeholder="Vaše ime" />
+          </label>
+          <label>
+            <span data-i18n="form.phone">Telefon</span>
+            <input name="phone" type="tel" autocomplete="tel" required data-i18n-placeholder="form.phonePh" placeholder="06x xxx xxx" />
+          </label>
+          <label class="full">
+            <span data-i18n="form.book">Knjiga</span>
+            <select name="book">
+              <option value="korijenje">Naše korijenje · 24,90 €</option>
+              <option value="mama" data-i18n="form.mama">Mama, ispričaj mi svoju priču (lista čekanja)</option>
+              <option value="tata" data-i18n="form.tata">Tata, ispričaj mi svoju priču (lista čekanja)</option>
+            </select>
+          </label>
+          <label class="full">
+            <span data-i18n="form.city">Grad i adresa</span>
+            <textarea name="message" rows="3" data-i18n-placeholder="form.cityPh" placeholder="Mostar, ulica..."></textarea>
+          </label>
+          <div class="full form-footer">
+            <button class="btn btn-dark" type="submit" data-i18n="form.submit">Pošalji na WhatsApp</button>
+            <p class="form-status" id="form-status" role="status"></p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="foot-grid">
+        <p data-i18n="foot.1">Sigurna kupovina i brza dostava</p>
+        <p data-i18n="foot.2">Dostava širom BiH, Hrvatske i Srbije</p>
+        <p data-i18n="foot.3">Plaćanje po dogovoru</p>
+        <p data-i18n="foot.4">Podržite domaći brend</p>
+      </div>
+      <p>Naše korijenje</p>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>
