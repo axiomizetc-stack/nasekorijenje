@@ -1,0 +1,333 @@
+const translations = {
+  bs: {
+    skip: "Preskoči na sadržaj",
+    "nav.menu": "Meni",
+    "nav.home": "Početna",
+    "nav.mama": "Mama",
+    "nav.tree": "Stablo",
+    "nav.book": "Knjiga",
+    "nav.collection": "Kolekcija",
+    "nav.story": "Naša priča",
+    "nav.contact": "Kontakt",
+    "nav.order": "Naruči knjigu",
+    "hero.kicker": "Prvo izdanje · Mama, ispričaj mi priču",
+    "hero.title": "Sačuvaj priče koje čine tvoju porodicu.",
+    "hero.lead":
+      "Prva knjiga je spremna: Mama, ispričaj mi priču. Poklonite mami prostor da ispiše svoj život — od djetinjstva do poruke djeci.",
+    "hero.primary": "Naruči Maminu knjigu",
+    "hero.secondary": "Pogledaj primjere",
+    "hero.tree": "Napravi porodično stablo",
+    "f.1.title": "Originalna pitanja",
+    "f.1.text": "Pažljivo birana pitanja koja otvaraju sjećanja, a ne kopiraju tuđu knjigu.",
+    "f.2.title": "Prostor za fotografije",
+    "f.2.text": "Stranice za slike, djecu, roditelje i trenutke koje želite zadržati.",
+    "f.3.title": "Poklon za cijeli život",
+    "f.3.text": "Više od knjige: porodična riznica koja se prenosi.",
+    "price.label": "Cijena",
+    "price.meta": "Tvrdi uvez · A5 format",
+    "price.cta": "Naruči odmah",
+    "inside.kicker": "Šta te očekuje u knjizi",
+    "inside.title": "Pitanja koja otvaraju srce i vraćaju uspomene.",
+    "inside.text":
+      "Mama, ispričaj mi priču nije prepisana tuđa knjiga. To je originalan prostor za majčin glas: djetinjstvo, ljubav, porodica i poruka djeci.",
+    "q.1": "Kako izgleda tvoje najranije sjećanje?",
+    "q.2": "Kako je izgledao tvoj dom dok si bila djevojčica?",
+    "q.3": "Šta te je oblikovalo kao ženu i majku?",
+    "q.4": "Kako si upoznala tatu?",
+    "q.5": "Koja je najljepša uspomena iz djetinjstva?",
+    "q.6": "Koje vrijednosti želiš prenijeti djeci?",
+    "q.7": "Šta te naučilo najteže iskustvo?",
+    "q.8": "Koju poruku ostavljaš svojoj djeci?",
+    "ch.kicker": "Sadržaj",
+    "ch.title": "Osam poglavlja, jedan život.",
+    "ch.1": "Moje djetinjstvo",
+    "ch.2": "Mama i tata",
+    "ch.3": "Škola i mladi dani",
+    "ch.4": "Ljubav i brak",
+    "ch.5": "Kad ste se rodili",
+    "ch.6": "Naš dom",
+    "ch.7": "Lekcije koje nosim",
+    "ch.8": "Poruka za tebe",
+    "gift.kicker": "Za majke, kćeri i sinove",
+    "gift.title": "Jedna priča. Mnogo generacija.",
+    "gift.text":
+      "Mama, ispričaj mi priču je prva knjiga koju lansiramo. Tata i porodično izdanje dolaze zatim. Ista kolekcija, svaka sa svojim glasom.",
+    "gift.cta": "Naruči svoj primjerak",
+    "col.kicker": "Kolekcija",
+    "col.title": "Tri knjige, jedan brend.",
+    "col.text": "Prvo izdanje je Mama. Tata i porodična knjiga dolaze zatim. Ista linija, različite korice.",
+    "col.mama": "Mama, ispričaj mi priču",
+    "col.tata": "Tata, ispričaj mi svoju priču",
+    "col.soon": "U pripremi",
+    "col.now": "Dostupno za narudžbu · 24,90 €",
+    "col.open": "Pogledaj knjigu",
+    "col.tree": "Porodično stablo",
+    "col.treeText": "Napravi stablo, unesi imena i preuzmi PDF ili sliku.",
+    "contact.kicker": "Narudžba",
+    "contact.title": "Naruči knjigu porukom.",
+    "contact.text":
+      "Obrazac otvara WhatsApp s već napisanom narudžbom. Dostava u BiH, Hrvatsku i Srbiju. Plaćanje po dogovoru.",
+    "form.name": "Ime",
+    "form.namePh": "Vaše ime",
+    "form.phone": "Telefon",
+    "form.phonePh": "06x xxx xxx",
+    "form.book": "Knjiga",
+    "form.mama": "Mama, ispričaj mi priču · 24,90 €",
+    "form.tata": "Tata, ispričaj mi svoju priču (lista čekanja)",
+    "form.city": "Grad i adresa",
+    "form.cityPh": "Mostar, ulica...",
+    "form.submit": "Pošalji na WhatsApp",
+    "form.error": "Unesite ime i telefon.",
+    "foot.1": "Sigurna kupovina i brza dostava",
+    "foot.2": "Dostava širom BiH, Hrvatske i Srbije",
+    "foot.3": "Plaćanje po dogovoru",
+    "foot.4": "Podržite domaći brend",
+    "mama.kicker": "Prvo izdanje · Spremno za narudžbu",
+    "mama.title": "Mama, ispričaj mi priču.",
+    "mama.lead":
+      "Knjiga-dnevnik u kojoj mama piše svoj život djetetu. Tvrdi uvez, A5, 24,90 €. Ispod su primjeri popunjenih stranica — tako izgleda kad priča počne.",
+    "mama.cta": "Naruči Maminu knjigu",
+    "mama.examples": "Pogledaj primjere",
+    "mama.badge": "24,90 € · tvrdi uvez",
+    "ex.kicker": "Primjeri iz knjige",
+    "ex.title": "Ovako izgleda popunjena knjiga.",
+    "ex.text":
+      "Ovo nisu prave porodične priče — samo primjeri da se vidi ritam stranice, pitanja i prostor za sliku. Mama piše rukom, svojim riječima.",
+    "ex.sample": "Primjer",
+    "ex.q1": "Kako izgleda tvoje najranije sjećanje?",
+    "ex.a1":
+      "Dvorište kod bake. Miris hljeba iz peći i ja bosih nogu u prašini. Imala sam pet godina, a činilo mi se da je ljeto trajalo cijeli život.",
+    "ex.q2": "Koja uspomena iz djetinjstva ti je najdraža?",
+    "ex.cap2": "Mjesto za fotografiju",
+    "ex.note2": "Najljepša uspomena se uvijek ne izgovori. Neko je nacrta, neko zalijepi sliku.",
+    "ex.q3": "Kako si upoznala tatu?",
+    "ex.a3":
+      "Na veselju. Tražio je čašu vode, a ja sam mu je donijela. Nismo znali da će od te čaše ostati cijeli ovaj dom.",
+    "ex.q4": "Šta želiš da tvoje dijete zapamti o tebi?",
+    "ex.a4":
+      "Da sam voljela tiho. Da sam kuhala više nego što sam govorila. I da sam, kad god sam mogla, birala vas.",
+    "ex.pg": "str.",
+    "tree.kicker": "Porodično stablo",
+    "tree.title": "Nacrtaj svoju porodicu.",
+    "tree.lead":
+      "Unesite imena. Stablo se slaže samo. Kad je gotovo, preuzmite ga kao sliku ili PDF — za knjigu, zid ili poklon.",
+    "tree.family": "Ime porodice",
+    "tree.familyPh": "Porodica Hadžić",
+    "tree.edit": "Unesite imena",
+    "tree.jpeg": "Preuzmi JPEG",
+    "tree.pdf": "Preuzmi PDF",
+    "tree.example": "Učitaj primjer",
+    "tree.clear": "Obriši imena",
+    "tree.add": "Dodaj dijete",
+    "tree.remove": "Ukloni",
+    "tree.saving": "Pripremam datoteku…",
+    "tree.saved": "Preuzimanje je krenulo.",
+    "tree.fail": "Preuzimanje nije uspjelo. Pokušajte ponovo.",
+    "tree.artKicker": "Naše korijenje",
+    "tree.role.mgm": "Baka · majčina",
+    "tree.role.mgf": "Djed · majčin",
+    "tree.role.pgm": "Baka · očeva",
+    "tree.role.pgf": "Djed · očev",
+    "tree.role.mother": "Mama",
+    "tree.role.father": "Tata",
+    "tree.role.self": "Ja",
+    "tree.role.partner": "Partner / partnerica",
+    "tree.role.child": "Dijete",
+    "tree.empty": "Ime",
+    "tree.foot": "Napravljeno na nasekorijenje · porodično stablo",
+  },
+  en: {
+    skip: "Skip to content",
+    "nav.menu": "Menu",
+    "nav.home": "Home",
+    "nav.mama": "Mum",
+    "nav.tree": "Tree",
+    "nav.book": "The book",
+    "nav.collection": "Collection",
+    "nav.story": "Our story",
+    "nav.contact": "Contact",
+    "nav.order": "Order the book",
+    "hero.kicker": "First edition · Mum, tell me a story",
+    "hero.title": "Keep the stories that make your family.",
+    "hero.lead":
+      "The first book is ready: Mum, tell me a story. Give your mother a place to write a life — from childhood to a message for her children.",
+    "hero.primary": "Order Mum's book",
+    "hero.secondary": "See the examples",
+    "hero.tree": "Build a family tree",
+    "f.1.title": "Original questions",
+    "f.1.text": "Carefully chosen questions that open memory, not a copied book.",
+    "f.2.title": "Room for photographs",
+    "f.2.text": "Pages for pictures, children, parents and the moments you want to keep.",
+    "f.3.title": "A gift for a lifetime",
+    "f.3.text": "More than a book: a family store that gets passed on.",
+    "price.label": "Price",
+    "price.meta": "Hardcover · A5",
+    "price.cta": "Order now",
+    "inside.kicker": "What waits inside",
+    "inside.title": "Questions that open the heart and bring memories back.",
+    "inside.text":
+      "Mum, tell me a story is not a copied book. It is an original space for a mother's voice: childhood, love, family and a message for her children.",
+    "q.1": "What does your earliest memory look like?",
+    "q.2": "What did your home look like when you were a girl?",
+    "q.3": "What shaped you as a woman and a mother?",
+    "q.4": "How did you meet dad?",
+    "q.5": "What is your loveliest childhood memory?",
+    "q.6": "Which values do you want to pass to your children?",
+    "q.7": "What did your hardest experience teach you?",
+    "q.8": "What message do you leave your children?",
+    "ch.kicker": "Contents",
+    "ch.title": "Eight chapters, one life.",
+    "ch.1": "My childhood",
+    "ch.2": "Mum and dad",
+    "ch.3": "School and young days",
+    "ch.4": "Love and marriage",
+    "ch.5": "When you were born",
+    "ch.6": "Our home",
+    "ch.7": "Lessons I carry",
+    "ch.8": "A message for you",
+    "gift.kicker": "For mothers, daughters and sons",
+    "gift.title": "One story. Many generations.",
+    "gift.text":
+      "Mum, tell me a story is the first book we launch. Dad and the family edition follow. The same collection, each with its own voice.",
+    "gift.cta": "Order your copy",
+    "col.kicker": "Collection",
+    "col.title": "Three books, one brand.",
+    "col.text": "The first edition is Mum. Dad and the family book come next. The same line, different covers.",
+    "col.mama": "Mum, tell me a story",
+    "col.tata": "Dad, tell me your story",
+    "col.soon": "Coming next",
+    "col.now": "Available to order · 24.90 €",
+    "col.open": "Open the book",
+    "col.tree": "Family tree",
+    "col.treeText": "Build a tree, type the names, download a PDF or a picture.",
+    "contact.kicker": "Order",
+    "contact.title": "Order the book by message.",
+    "contact.text":
+      "The form opens WhatsApp with the order already written. Delivery in Bosnia, Croatia and Serbia. Payment by arrangement.",
+    "form.name": "Name",
+    "form.namePh": "Your name",
+    "form.phone": "Phone",
+    "form.phonePh": "06x xxx xxx",
+    "form.book": "Book",
+    "form.mama": "Mum, tell me a story · 24.90 €",
+    "form.tata": "Dad, tell me your story (waitlist)",
+    "form.city": "City and address",
+    "form.cityPh": "Mostar, street...",
+    "form.submit": "Send on WhatsApp",
+    "form.error": "Enter a name and phone number.",
+    "foot.1": "Careful packing and fast delivery",
+    "foot.2": "Delivery across Bosnia, Croatia and Serbia",
+    "foot.3": "Payment by arrangement",
+    "foot.4": "Support a local brand",
+    "mama.kicker": "First edition · Ready to order",
+    "mama.title": "Mum, tell me a story.",
+    "mama.lead":
+      "A journal in which a mother writes her life for her child. Hardcover, A5, 24.90 €. Below are filled-page examples — this is how a story begins.",
+    "mama.cta": "Order Mum's book",
+    "mama.examples": "See the examples",
+    "mama.badge": "24.90 € · hardcover",
+    "ex.kicker": "Examples from the book",
+    "ex.title": "This is a filled book.",
+    "ex.text":
+      "These are not real family stories — only examples so you can see the page, the question and the space for a photo. Mum writes by hand, in her own words.",
+    "ex.sample": "Example",
+    "ex.q1": "What does your earliest memory look like?",
+    "ex.a1":
+      "The yard at my grandmother's. Bread from the oven and me barefoot in the dust. I was five, and summer felt as if it would last a lifetime.",
+    "ex.q2": "Which childhood memory is dearest to you?",
+    "ex.cap2": "A place for a photograph",
+    "ex.note2": "The loveliest memory is not always spoken. Some draw it. Some glue in a picture.",
+    "ex.q3": "How did you meet dad?",
+    "ex.a3":
+      "At a celebration. He asked for a glass of water and I brought it. We did not know that glass would become this whole house.",
+    "ex.q4": "What do you want your child to remember about you?",
+    "ex.a4":
+      "That I loved quietly. That I cooked more than I spoke. And that, whenever I could, I chose you.",
+    "ex.pg": "p.",
+    "tree.kicker": "Family tree",
+    "tree.title": "Draw your family.",
+    "tree.lead":
+      "Type the names. The tree arranges itself. When it is ready, download it as a picture or a PDF — for the book, a wall or a gift.",
+    "tree.family": "Family name",
+    "tree.familyPh": "The Hadzic family",
+    "tree.edit": "Enter the names",
+    "tree.jpeg": "Download JPEG",
+    "tree.pdf": "Download PDF",
+    "tree.example": "Load example",
+    "tree.clear": "Clear names",
+    "tree.add": "Add a child",
+    "tree.remove": "Remove",
+    "tree.saving": "Preparing the file…",
+    "tree.saved": "Download started.",
+    "tree.fail": "Download failed. Please try again.",
+    "tree.artKicker": "Nase korijenje",
+    "tree.role.mgm": "Grandmother · mother's side",
+    "tree.role.mgf": "Grandfather · mother's side",
+    "tree.role.pgm": "Grandmother · father's side",
+    "tree.role.pgf": "Grandfather · father's side",
+    "tree.role.mother": "Mum",
+    "tree.role.father": "Dad",
+    "tree.role.self": "Me",
+    "tree.role.partner": "Partner",
+    "tree.role.child": "Child",
+    "tree.empty": "Name",
+    "tree.foot": "Made on nasekorijenje · family tree",
+  },
+};
+
+const bookLabels = {
+  bs: {
+    mama: "Mama, ispričaj mi priču",
+    korijenje: "Naše korijenje",
+    tata: "Tata, ispričaj mi svoju priču (lista čekanja)",
+  },
+  en: {
+    mama: "Mum, tell me a story",
+    korijenje: "Nase korijenje",
+    tata: "Dad, tell me your story (waitlist)",
+  },
+};
+
+function currentLang() {
+  return localStorage.getItem("korijenje-lang") || "bs";
+}
+
+function applyLanguage(lang) {
+  const pack = translations[lang] || translations.bs;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach((node) => {
+    const key = node.getAttribute("data-i18n");
+    if (pack[key]) node.textContent = pack[key];
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+    const key = node.getAttribute("data-i18n-placeholder");
+    if (pack[key]) node.setAttribute("placeholder", pack[key]);
+  });
+  document.querySelectorAll("[data-i18n-aria]").forEach((node) => {
+    const key = node.getAttribute("data-i18n-aria");
+    if (pack[key]) node.setAttribute("aria-label", pack[key]);
+  });
+  document.querySelectorAll(".lang button").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
+  });
+  localStorage.setItem("korijenje-lang", lang);
+  document.dispatchEvent(new CustomEvent("korijenje-lang", { detail: lang }));
+}
+
+document.querySelectorAll(".lang button").forEach((button) => {
+  button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+});
+applyLanguage(currentLang());
+
+const header = document.querySelector(".site-header");
+const toggle = document.querySelector(".menu-toggle");
+toggle?.addEventListener("click", () => {
+  const open = header.classList.toggle("is-open");
+  toggle.setAttribute("aria-expanded", String(open));
+});
+document.querySelectorAll("#nav a").forEach((link) => {
+  link.addEventListener("click", () => {
+    header.classList.remove("is-open");
+    toggle?.setAttribute("aria-expanded", "false");
+  });
+});

@@ -47,7 +47,7 @@ p { margin: 0; }
 .logo img { height: 36px; width: auto; }
 #nav { display: flex; gap: 22px; margin-left: 12px; }
 #nav a { text-decoration: none; font-weight: 500; }
-#nav a:hover { color: var(--green); }
+#nav a:hover, #nav a[aria-current="page"] { color: var(--green); }
 .header-end { margin-left: auto; display: flex; align-items: center; gap: 12px; }
 .lang { display: flex; padding: 4px; border-radius: 999px; background: #fff; border: 1px solid var(--line); }
 .lang button {
@@ -190,6 +190,8 @@ h2 { font-size: clamp(2rem, 4vw, 3.3rem); margin: 10px 0 14px; }
     #eadfce;
 }
 .col-grid h3 { font-size: 1.4rem; margin-bottom: 6px; }
+.col-grid a { display: inline-block; margin-top: 10px; font-weight: 650; color: var(--green); }
+.col-grid .featured { outline: 2px solid rgba(47, 74, 52, 0.18); }
 
 .contact ul { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
 .contact a { font-weight: 650; }
@@ -224,10 +226,197 @@ footer { margin-top: 80px; padding: 28px 6vw 40px; background: #eef3ea; }
 .foot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; color: var(--muted); }
 footer > p { margin-top: 22px; font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.3rem; }
 
+.mama-badge {
+  margin-top: 16px;
+  color: var(--green);
+  font-weight: 650;
+}
+.mama-cover { background: #efe7d8; min-height: 520px; display: grid; place-items: center; }
+.cover-book {
+  width: min(280px, 70%);
+  aspect-ratio: 3 / 4.2;
+  padding: 36px 22px;
+  border-radius: 6px 14px 14px 6px;
+  background:
+    linear-gradient(90deg, rgba(93, 74, 52, 0.18), transparent 12px),
+    #f7f1e6;
+  box-shadow: 12px 18px 40px rgba(29, 42, 32, 0.16);
+  color: var(--ink);
+}
+.cover-book p {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  line-height: 1.05;
+}
+.cover-book span {
+  display: block;
+  margin-top: 40px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: var(--leaf);
+}
+
+.examples { width: min(1120px, calc(100% - 40px)); margin: 88px auto 0; }
+.spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 28px;
+}
+.page {
+  position: relative;
+  min-height: 420px;
+  padding: 28px 28px 36px;
+  border-radius: 6px;
+  background:
+    linear-gradient(180deg, #fffdf8, #f4efe6);
+  box-shadow: var(--shadow);
+}
+.page-flag {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  font-weight: 650;
+}
+.page-no { color: var(--muted); font-size: 0.85rem; }
+.page-q {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.7rem;
+  margin: 18px 0 16px;
+  max-width: 18ch;
+}
+.page-hand {
+  font-family: Caveat, "Segoe Script", cursive;
+  font-size: 1.7rem;
+  line-height: 1.45;
+  color: #3a4a36;
+}
+.page-photo figure { margin: 16px 0; }
+.page-photo img { height: 180px; width: 100%; object-fit: cover; border-radius: 8px; }
+.page-photo figcaption, .page-note { color: var(--muted); font-size: 0.92rem; }
+
+.tree-page { width: min(1280px, calc(100% - 40px)); margin: 0 auto 80px; }
+.tree-intro { padding: 36px 0 10px; max-width: 40rem; }
+.tree-work {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 20px;
+}
+.tree-form {
+  position: sticky;
+  top: 88px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 12px;
+}
+.form-kicker { font-weight: 650; color: var(--green); }
+#tree-fields { display: grid; gap: 10px; }
+.child-row { display: flex; gap: 8px; }
+.tree-actions, .tree-downloads { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn-quiet {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  padding: 8px 4px;
+}
+.tree-scroll { overflow-x: auto; padding-bottom: 8px; }
+.tree-art {
+  width: 1200px;
+  min-height: 900px;
+  padding: 28px 32px 20px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 20%, #fffaf1, #f3eee4 70%);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+.tree-brand {
+  text-align: center;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--leaf);
+  font-weight: 650;
+}
+.tree-art h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin: 6px 0 8px;
+}
+.tree-stage { position: relative; height: 760px; }
+.tree-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gen {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 170px;
+}
+.pair { display: flex; gap: 16px; }
+.leaf-card {
+  min-width: 150px;
+  max-width: 200px;
+  padding: 12px 14px 14px;
+  border-radius: 18px;
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid rgba(196, 163, 90, 0.45);
+  box-shadow: 0 10px 24px rgba(29, 42, 32, 0.08);
+  text-align: center;
+}
+.leaf-card span {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  font-weight: 650;
+}
+.leaf-card strong {
+  display: block;
+  margin-top: 6px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+}
+.leaf-card.is-empty strong { color: #b7b1a6; font-style: italic; }
+.leaf-lg { min-width: 180px; }
+.leaf-hero {
+  min-width: 200px;
+  background: #2f4a34;
+  color: #fff;
+  border-color: #2f4a34;
+}
+.leaf-hero span { color: #d7e3d4; }
+.leaf-hero strong { color: #fff; }
+.leaf-hero.is-empty strong { color: #9eae9b; }
+.gen-c { height: 150px; gap: 12px; flex-wrap: wrap; }
+.tree-foot {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
 @media (max-width: 900px) {
-  .hero, .inside, .gift, .contact, .features, .col-grid, .chapters ol, .order-form, .foot-grid {
+  .hero, .inside, .gift, .contact, .features, .col-grid, .chapters ol, .order-form, .foot-grid, .spread, .tree-work {
     grid-template-columns: 1fr;
   }
+  .tree-form { position: static; }
+  .mama-cover { min-height: 360px; }
   .hero-photo img, .inside img, .gift img { height: 300px; }
   h1 { font-size: 2.5rem; }
   .menu-toggle { display: block; }

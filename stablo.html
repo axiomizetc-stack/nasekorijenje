@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="bs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Porodično stablo | Naše korijenje</title>
+    <meta
+      name="description"
+      content="Napravite porodično stablo: unesite imena i preuzmite PDF ili JPEG. Besplatno, na stranici Naše korijenje."
+    />
+    <meta name="theme-color" content="#2f4a34" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@380;500;650&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#sadrzaj" data-i18n="skip">Preskoči na sadržaj</a>
+    <header class="site-header">
+      <a class="logo" href="index.html">
+        <img src="images/logo.svg" alt="Naše korijenje" width="220" height="38" />
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" data-i18n-aria="nav.menu" aria-label="Meni">
+        <span></span><span></span>
+      </button>
+      <nav id="nav">
+        <a href="index.html" data-i18n="nav.home">Početna</a>
+        <a href="mama.html" data-i18n="nav.mama">Mama</a>
+        <a href="stablo.html" aria-current="page" data-i18n="nav.tree">Stablo</a>
+        <a href="index.html#kolekcija" data-i18n="nav.collection">Kolekcija</a>
+        <a href="index.html#kontakt" data-i18n="nav.contact">Kontakt</a>
+      </nav>
+      <div class="header-end">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="bs" aria-pressed="true">BS</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="header-cta" href="mama.html#kontakt" data-i18n="nav.order">Naruči knjigu</a>
+      </div>
+    </header>
+
+    <main id="sadrzaj" class="tree-page">
+      <section class="tree-intro">
+        <p class="eyebrow" data-i18n="tree.kicker">Porodično stablo</p>
+        <h1 data-i18n="tree.title">Nacrtaj svoju porodicu.</h1>
+        <p class="lead" data-i18n="tree.lead">
+          Unesite imena. Stablo se slaže samo. Kad je gotovo, preuzmite ga kao sliku ili PDF — za knjigu, zid ili poklon.
+        </p>
+      </section>
+
+      <section class="tree-work">
+        <form class="tree-form" id="tree-form" autocomplete="off">
+          <p class="form-kicker" data-i18n="tree.edit">Unesite imena</p>
+          <label>
+            <span data-i18n="tree.family">Ime porodice</span>
+            <input id="family-name" type="text" maxlength="48" data-i18n-placeholder="tree.familyPh" placeholder="Porodica Hadžić" />
+          </label>
+          <div id="tree-fields"></div>
+          <div class="tree-actions">
+            <button type="button" class="btn btn-line" id="add-child" data-i18n="tree.add">Dodaj dijete</button>
+            <button type="button" class="btn-quiet" id="load-example" data-i18n="tree.example">Učitaj primjer</button>
+            <button type="button" class="btn-quiet" id="clear-tree" data-i18n="tree.clear">Obriši imena</button>
+          </div>
+          <div class="tree-downloads">
+            <button type="button" class="btn btn-dark" id="download-jpeg" data-i18n="tree.jpeg">Preuzmi JPEG</button>
+            <button type="button" class="btn btn-dark" id="download-pdf" data-i18n="tree.pdf">Preuzmi PDF</button>
+          </div>
+          <p class="form-status" id="tree-status" role="status"></p>
+        </form>
+
+        <div class="tree-scroll">
+          <article class="tree-art" id="tree-art">
+            <p class="tree-brand" data-i18n="tree.artKicker">Naše korijenje</p>
+            <h2 id="tree-family-title">Porodica Hadžić</h2>
+            <div class="tree-stage">
+              <svg class="tree-bg" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bark" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#5b4634" />
+                    <stop offset="100%" stop-color="#3d2d22" />
+                  </linearGradient>
+                  <linearGradient id="canopy" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#9aa882" />
+                    <stop offset="100%" stop-color="#6d8a6f" />
+                  </linearGradient>
+                </defs>
+                <ellipse cx="600" cy="720" rx="220" ry="28" fill="#d8c9ae" />
+                <path d="M600 710c-18-90-22-190-16-290 40 8 48 70 52 140 8 82 6 130-8 150z" fill="url(#bark)" />
+                <path d="M584 430c-90-40-180-38-250-8" fill="none" stroke="#6a553d" stroke-width="10" stroke-linecap="round" />
+                <path d="M616 430c90-40 180-38 250-8" fill="none" stroke="#6a553d" stroke-width="10" stroke-linecap="round" />
+                <path d="M360 410c-70-70-90-150-70-210" fill="none" stroke="#6a553d" stroke-width="7" stroke-linecap="round" />
+                <path d="M840 410c70-70 90-150 70-210" fill="none" stroke="#6a553d" stroke-width="7" stroke-linecap="round" />
+                <path d="M600 500c-40 40-70 90-80 140" fill="none" stroke="#6a553d" stroke-width="6" stroke-linecap="round" />
+                <path d="M600 500c40 40 70 90 80 140" fill="none" stroke="#6a553d" stroke-width="6" stroke-linecap="round" />
+                <g fill="url(#canopy)" opacity="0.35">
+                  <ellipse cx="250" cy="150" rx="70" ry="28" />
+                  <ellipse cx="430" cy="120" rx="80" ry="30" />
+                  <ellipse cx="770" cy="120" rx="80" ry="30" />
+                  <ellipse cx="950" cy="150" rx="70" ry="28" />
+                  <ellipse cx="200" cy="360" rx="60" ry="22" />
+                  <ellipse cx="1000" cy="360" rx="60" ry="22" />
+                </g>
+                <g fill="#6d8a6f">
+                  <ellipse cx="190" cy="188" rx="11" ry="18" transform="rotate(-20 190 188)" />
+                  <ellipse cx="1010" cy="188" rx="11" ry="18" transform="rotate(20 1010 188)" />
+                  <ellipse cx="560" cy="300" rx="10" ry="16" transform="rotate(-12 560 300)" />
+                  <ellipse cx="640" cy="300" rx="10" ry="16" transform="rotate(12 640 300)" />
+                </g>
+                <g fill="#c4a35a" opacity="0.7">
+                  <circle cx="300" cy="240" r="4" />
+                  <circle cx="900" cy="240" r="4" />
+                  <circle cx="600" cy="260" r="4" />
+                </g>
+              </svg>
+
+              <div class="gen gen-g">
+                <div class="pair">
+                  <article class="leaf-card" data-leaf="mgm"><span data-i18n="tree.role.mgm">Baka · majčina</span><strong>Fatima</strong></article>
+                  <article class="leaf-card" data-leaf="mgf"><span data-i18n="tree.role.mgf">Djed · majčin</span><strong>Hasan</strong></article>
+                </div>
+                <div class="pair">
+                  <article class="leaf-card" data-leaf="pgm"><span data-i18n="tree.role.pgm">Baka · očeva</span><strong>Ana</strong></article>
+                  <article class="leaf-card" data-leaf="pgf"><span data-i18n="tree.role.pgf">Djed · očev</span><strong>Ivan</strong></article>
+                </div>
+              </div>
+              <div class="gen gen-p">
+                <article class="leaf-card leaf-lg" data-leaf="mother"><span data-i18n="tree.role.mother">Mama</span><strong>Amra</strong></article>
+                <article class="leaf-card leaf-lg" data-leaf="father"><span data-i18n="tree.role.father">Tata</span><strong>Marko</strong></article>
+              </div>
+              <div class="gen gen-s">
+                <article class="leaf-card leaf-hero" data-leaf="self"><span data-i18n="tree.role.self">Ja</span><strong>Emina</strong></article>
+                <article class="leaf-card leaf-hero" data-leaf="partner"><span data-i18n="tree.role.partner">Partner / partnerica</span><strong>Luka</strong></article>
+              </div>
+              <div class="gen gen-c" id="tree-children"></div>
+            </div>
+            <p class="tree-foot" data-i18n="tree.foot">Napravljeno na nasekorijenje · porodično stablo</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="foot-grid">
+        <p data-i18n="foot.1">Sigurna kupovina i brza dostava</p>
+        <p data-i18n="foot.2">Dostava širom BiH, Hrvatske i Srbije</p>
+        <p data-i18n="foot.3">Plaćanje po dogovoru</p>
+        <p data-i18n="foot.4">Podržite domaći brend</p>
+      </div>
+      <p>Naše korijenje</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/tree.js"></script>
+  </body>
+</html>

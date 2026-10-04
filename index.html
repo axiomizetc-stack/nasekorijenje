@@ -6,7 +6,7 @@
     <title>Naše korijenje | Priče koje žive zauvijek</title>
     <meta
       name="description"
-      content="Naše korijenje je knjiga-dnevnik za porodične priče. Mama, Tata i porodično izdanje. 24,90 €. Dostava u BiH, Hrvatsku i Srbiju."
+      content="Mama, ispričaj mi priču — prvo izdanje knjige-dnevnika Naše korijenje. 24,90 €. Napravite i porodično stablo. Dostava u BiH, Hrvatsku i Srbiju."
     />
     <meta name="theme-color" content="#2f4a34" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -21,18 +21,18 @@
   <body>
     <a class="skip" href="#sadrzaj" data-i18n="skip">Preskoči na sadržaj</a>
     <header class="site-header">
-      <a class="logo" href="#vrh">
+      <a class="logo" href="index.html">
         <img src="images/logo.svg" alt="Naše korijenje" width="220" height="38" />
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" data-i18n-aria="nav.menu" aria-label="Meni">
         <span></span><span></span>
       </button>
       <nav id="nav">
-        <a href="#vrh" data-i18n="nav.home">Početna</a>
-        <a href="#knjiga" data-i18n="nav.book">Knjiga</a>
-        <a href="#kolekcija" data-i18n="nav.collection">Kolekcija</a>
-        <a href="#prica" data-i18n="nav.story">Naša priča</a>
-        <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
+        <a href="index.html" aria-current="page" data-i18n="nav.home">Početna</a>
+        <a href="mama.html" data-i18n="nav.mama">Mama</a>
+        <a href="stablo.html" data-i18n="nav.tree">Stablo</a>
+        <a href="index.html#kolekcija" data-i18n="nav.collection">Kolekcija</a>
+        <a href="index.html#kontakt" data-i18n="nav.contact">Kontakt</a>
       </nav>
       <div class="header-end">
         <div class="lang" role="group" aria-label="Language">
@@ -46,14 +46,15 @@
     <main id="sadrzaj">
       <section class="hero" id="vrh">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n="hero.kicker">Porodične priče · Uspomene · Generacije</p>
+          <p class="eyebrow" data-i18n="hero.kicker">Prvo izdanje · Mama, ispričaj mi priču</p>
           <h1 data-i18n="hero.title">Sačuvaj priče koje čine tvoju porodicu.</h1>
           <p class="lead" data-i18n="hero.lead">
-            Poklonite mami, tati ili cijeloj kući prostor da ispišu svoj život — od djetinjstva i prvih ljubavi do uspomena koje žele ostaviti sljedećim generacijama.
+            Prva knjiga je spremna: Mama, ispričaj mi priču. Poklonite mami prostor da ispiše svoj život — od djetinjstva do poruke djeci.
           </p>
           <div class="actions">
-            <a class="btn btn-dark" href="#kontakt" data-i18n="hero.primary">Naruči svoj primjerak</a>
-            <a class="btn btn-line" href="#knjiga" data-i18n="hero.secondary">Pogledaj šta je unutra</a>
+            <a class="btn btn-dark" href="mama.html" data-i18n="hero.primary">Naruči Maminu knjigu</a>
+            <a class="btn btn-line" href="mama.html#primjeri" data-i18n="hero.secondary">Pogledaj primjere</a>
+            <a class="btn btn-line" href="stablo.html" data-i18n="hero.tree">Napravi porodično stablo</a>
           </div>
         </div>
         <figure class="hero-photo">
@@ -128,7 +129,7 @@
           <p class="eyebrow" data-i18n="gift.kicker">Za majke, očeve, bake i djedove</p>
           <h2 data-i18n="gift.title">Jedna priča. Mnogo generacija.</h2>
           <p data-i18n="gift.text">
-            Prva knjiga je za mamu. Druga za tatu. Treća je porodična. Sve tri izgledaju kao ista kolekcija, a svaka ima svoj glas. Krenut ćemo malim tiražom i prodajom online.
+            Mama, ispričaj mi priču je prva knjiga koju lansiramo. Tata i porodično izdanje dolaze zatim. Ista kolekcija, svaka sa svojim glasom.
           </p>
           <a class="btn btn-dark" href="#kontakt" data-i18n="gift.cta">Naruči svoj primjerak</a>
         </div>
@@ -141,13 +142,14 @@
         <div class="section-head">
           <p class="eyebrow" data-i18n="col.kicker">Kolekcija</p>
           <h2 data-i18n="col.title">Tri knjige, jedan brend.</h2>
-          <p data-i18n="col.text">Ista linija, različite korice. Prvo izdanje je porodično. Mama i Tata dolaze zatim.</p>
+          <p data-i18n="col.text">Prvo izdanje je Mama. Tata i porodična knjiga dolaze zatim. Ista linija, različite korice.</p>
         </div>
         <div class="col-grid">
-          <article class="soon">
-            <div class="cover cream"><span>Mama</span></div>
-            <h3 data-i18n="col.mama">Mama, ispričaj mi svoju priču</h3>
-            <p data-i18n="col.soon">U pripremi</p>
+          <article class="featured">
+            <div class="cover cream"><span>Mama, ispričaj mi priču</span></div>
+            <h3 data-i18n="col.mama">Mama, ispričaj mi priču</h3>
+            <p data-i18n="col.now">Dostupno za narudžbu · 24,90 €</p>
+            <a href="mama.html" data-i18n="col.open">Pogledaj knjigu</a>
           </article>
           <article class="soon">
             <div class="cover olive"><span>Tata</span></div>
@@ -155,9 +157,10 @@
             <p data-i18n="col.soon">U pripremi</p>
           </article>
           <article>
-            <div class="cover linen"><span>Naše korijenje</span></div>
-            <h3>Naše korijenje</h3>
-            <p data-i18n="col.now">Dostupno za narudžbu · 24,90 €</p>
+            <div class="cover linen"><span>Stablo</span></div>
+            <h3 data-i18n="col.tree">Porodično stablo</h3>
+            <p data-i18n="col.treeText">Napravi stablo, unesi imena i preuzmi PDF ili sliku.</p>
+            <a href="stablo.html" data-i18n="hero.tree">Napravi porodično stablo</a>
           </article>
         </div>
       </section>
@@ -186,8 +189,8 @@
           <label class="full">
             <span data-i18n="form.book">Knjiga</span>
             <select name="book">
+              <option value="mama" selected data-i18n="form.mama">Mama, ispričaj mi priču · 24,90 €</option>
               <option value="korijenje">Naše korijenje · 24,90 €</option>
-              <option value="mama" data-i18n="form.mama">Mama, ispričaj mi svoju priču (lista čekanja)</option>
               <option value="tata" data-i18n="form.tata">Tata, ispričaj mi svoju priču (lista čekanja)</option>
             </select>
           </label>
@@ -212,6 +215,7 @@
       </div>
       <p>Naše korijenje</p>
     </footer>
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
