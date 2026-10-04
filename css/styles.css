@@ -367,7 +367,7 @@ body.welcome-open { overflow: hidden; }
 .page-photo img { height: 180px; width: 100%; object-fit: cover; border-radius: 8px; }
 .page-photo figcaption, .page-note { color: var(--muted); font-size: 0.92rem; }
 
-.tree-page { width: min(1280px, calc(100% - 40px)); margin: 0 auto 80px; }
+.tree-page { width: min(1680px, calc(100% - 24px)); margin: 0 auto 80px; }
 .tree-intro { padding: 36px 0 10px; max-width: 40rem; }
 .tree-work { margin-top: 20px; }
 .tree-toolbar {
@@ -388,7 +388,7 @@ body.welcome-open { overflow: hidden; }
 }
 .tree-scroll { overflow-x: auto; padding-bottom: 8px; }
 .tree-art {
-  width: 1200px;
+  width: 1600px;
   min-height: 1040px;
   padding: 36px 32px 24px;
   border-radius: 28px;
@@ -436,6 +436,9 @@ h2.tree-family-title { font-weight: 500; }
   display: none !important;
 }
 .gen-gg, .gen-ggg { height: 132px; }
+.gen-p { gap: 72px; }
+.gen-s { gap: 14px; justify-content: center; flex-wrap: wrap; }
+.sibs { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .pair { display: flex; gap: 16px; }
 .leaf-card {
   position: relative;

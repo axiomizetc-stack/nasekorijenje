@@ -13,6 +13,8 @@ const PEOPLE = [
   ["pgf", "tree.role.pgf"],
   ["mother", "tree.role.mother"],
   ["father", "tree.role.father"],
+  ["pmother", "tree.role.pmother"],
+  ["pfather", "tree.role.pfather"],
   ["self", "tree.role.self"],
   ["partner", "tree.role.partner"],
 ];
@@ -32,6 +34,8 @@ const EMPTY_PEOPLE = {
   pgf: "",
   mother: "",
   father: "",
+  pmother: "",
+  pfather: "",
   self: "",
   partner: "",
 };
@@ -55,9 +59,12 @@ const EXAMPLES = {
       pgf: "Ibrahim",
       mother: "Amra",
       father: "Emir",
+      pmother: "Merima",
+      pfather: "Safet",
       self: "Emina",
       partner: "Adnan",
     },
+    siblings: ["Selma"],
     children: ["Lejla", "Tarik"],
     showPrapra: false,
   },
@@ -79,9 +86,12 @@ const EXAMPLES = {
       pgf: "Josip",
       mother: "Ivana",
       father: "Marko",
+      pmother: "Vesna",
+      pfather: "Tomislav",
       self: "Petra",
       partner: "Luka",
     },
+    siblings: ["Ante"],
     children: ["Mia", "Filip"],
     showPrapra: false,
   },
@@ -103,9 +113,12 @@ const EXAMPLES = {
       pgf: "Драган",
       mother: "Ана",
       father: "Стефан",
+      pmother: "Милена",
+      pfather: "Зоран",
       self: "Марија",
       partner: "Александар",
     },
+    siblings: ["Никола"],
     children: ["Лазар", "Софија"],
     showPrapra: false,
   },
@@ -127,9 +140,12 @@ const EXAMPLES = {
       pgf: "James",
       mother: "Claire",
       father: "Thomas",
+      pmother: "Sarah",
+      pfather: "Richard",
       self: "Emily",
       partner: "Daniel",
     },
+    siblings: ["James"],
     children: ["Oliver", "Sophie"],
     showPrapra: false,
   },
@@ -139,6 +155,7 @@ function blankState() {
   return {
     family: "",
     people: { ...EMPTY_PEOPLE },
+    siblings: [],
     children: [""],
     showPrapra: false,
   };
@@ -155,6 +172,7 @@ function normalizeState(raw, lang) {
     family: raw.family ?? example.family,
     people,
     children: Array.isArray(raw.children) && raw.children.length ? raw.children : example.children,
+    siblings: Array.isArray(raw.siblings) ? raw.siblings : [],
     showPrapra: raw.showPrapra === true,
   };
 }
@@ -184,11 +202,11 @@ function pack() {
   return translations[currentLang()] || translations.bs;
 }
 
-function cardMarkup(roleKey, name, personAttr, extraClass, removeIndex) {
+function cardMarkup(roleKey, name, personAttr, extraClass, removeKind, removeIndex) {
   const filled = Boolean(String(name || "").trim());
   const remove = removeIndex === undefined
     ? ""
-    : `<button type="button" class="leaf-remove" data-remove="${removeIndex}" aria-label="${pack()["tree.remove"]}">×</button>`;
+    : `<button type="button" class="leaf-remove" data-remove-${removeKind}="${removeIndex}" aria-label="${pack()["tree.remove"]}">×</button>`;
   return `<article class="leaf-card ${extraClass || ""} ${filled ? "is-filled" : "is-empty"}">
     ${remove}
     <span>${pack()[roleKey]}</span>
@@ -233,11 +251,20 @@ function renderTree() {
     }
   });
 
+  const sibs = document.getElementById("tree-siblings");
+  if (sibs) {
+    sibs.innerHTML = state.siblings
+      .map((name, index) =>
+        cardMarkup("tree.role.sibling", name, `data-sibling="${index}"`, `sib-${index}`, "sib", index)
+      )
+      .join("");
+  }
+
   const kids = document.getElementById("tree-children");
   if (kids) {
     kids.innerHTML = state.children
       .map((name, index) =>
-        cardMarkup("tree.role.child", name, `data-child="${index}"`, `child-${index}`, index)
+        cardMarkup("tree.role.child", name, `data-child="${index}"`, `child-${index}`, "child", index)
       )
       .join("");
   }
@@ -268,21 +295,41 @@ function bind() {
     if (child !== null && child !== undefined) {
       state.children[Number(child)] = event.target.value;
     }
+    const sibling = event.target.getAttribute("data-sibling");
+    if (sibling !== null && sibling !== undefined) {
+      state.siblings[Number(sibling)] = event.target.value;
+    }
     persist();
   });
 
   document.getElementById("tree-art")?.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-remove]");
-    if (!button) return;
-    const index = Number(button.getAttribute("data-remove"));
-    state.children = state.children.length === 1 ? [""] : state.children.filter((_, i) => i !== index);
-    persist();
-    renderTree();
+    const childBtn = event.target.closest("[data-remove-child]");
+    const sibBtn = event.target.closest("[data-remove-sib]");
+    if (childBtn) {
+      const index = Number(childBtn.getAttribute("data-remove-child"));
+      state.children = state.children.length === 1 ? [""] : state.children.filter((_, i) => i !== index);
+      persist();
+      renderTree();
+      return;
+    }
+    if (sibBtn) {
+      const index = Number(sibBtn.getAttribute("data-remove-sib"));
+      state.siblings = state.siblings.filter((_, i) => i !== index);
+      persist();
+      renderTree();
+    }
   });
 
   document.getElementById("add-child")?.addEventListener("click", () => {
     if (state.children.length >= 6) return;
     state.children.push("");
+    persist();
+    renderTree();
+  });
+
+  document.getElementById("add-sibling")?.addEventListener("click", () => {
+    if (state.siblings.length >= 6) return;
+    state.siblings.push("");
     persist();
     renderTree();
   });
