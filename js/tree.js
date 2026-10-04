@@ -155,7 +155,7 @@ function normalizeState(raw, lang) {
     family: raw.family ?? example.family,
     people,
     children: Array.isArray(raw.children) && raw.children.length ? raw.children : example.children,
-    showPrapra: Boolean(raw.showPrapra),
+    showPrapra: raw.showPrapra === true,
   };
 }
 
@@ -198,9 +198,13 @@ function cardMarkup(roleKey, name, personAttr, extraClass, removeIndex) {
 
 function renderTree() {
   const art = document.getElementById("tree-art");
+  state.showPrapra = state.showPrapra === true;
   art?.classList.toggle("has-prapra", state.showPrapra);
   const prapra = document.getElementById("tree-prapra");
-  if (prapra) prapra.hidden = !state.showPrapra;
+  if (prapra) {
+    prapra.hidden = !state.showPrapra;
+    prapra.style.display = state.showPrapra ? "" : "none";
+  }
 
   const toggle = document.getElementById("toggle-prapra");
   if (toggle) {
@@ -297,6 +301,7 @@ function bind() {
 
   document.getElementById("load-example")?.addEventListener("click", () => {
     state = exampleFor(activeLang);
+    state.showPrapra = false;
     persist();
     renderTree();
   });

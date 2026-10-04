@@ -431,6 +431,10 @@ h2.tree-family-title { font-weight: 500; }
   align-items: center;
   height: 148px;
 }
+.gen[hidden],
+#tree-prapra[hidden] {
+  display: none !important;
+}
 .gen-gg, .gen-ggg { height: 132px; }
 .pair { display: flex; gap: 16px; }
 .leaf-card {
