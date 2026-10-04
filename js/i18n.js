@@ -120,9 +120,15 @@ const translations = {
     "tree.kicker": "Porodično stablo",
     "tree.title": "Nacrtaj svoju porodicu.",
     "tree.lead":
-      "Unesite imena. Stablo se slaže samo. Kad je gotovo, preuzmite ga kao sliku ili PDF — za knjigu, zid ili poklon.",
+      "Kliknite ime na stablu i upišite svoje. Kad je gotovo, preuzmite sliku ili PDF.",
     "tree.family": "Ime porodice",
     "tree.familyPh": "Porodica Hadžić",
+    "welcome.title": "Odaberite jezik",
+    "welcome.text": "Stranica i primjer stabla prate jezik koji izaberete.",
+    "lang.bs": "Bosanski",
+    "lang.hr": "Hrvatski",
+    "lang.sr": "Srpski",
+    "lang.en": "English",
     "tree.edit": "Unesite imena",
     "tree.jpeg": "Preuzmi JPEG",
     "tree.pdf": "Preuzmi PDF",
@@ -267,9 +273,15 @@ const translations = {
     "tree.kicker": "Obiteljsko stablo",
     "tree.title": "Nacrtaj svoju obitelj.",
     "tree.lead":
-      "Unesite imena. Stablo se slaže samo. Kad je gotovo, preuzmite ga kao sliku ili PDF — za knjigu, zid ili poklon.",
+      "Kliknite ime na stablu i upišite svoje. Kad je gotovo, preuzmite sliku ili PDF.",
     "tree.family": "Ime obitelji",
-    "tree.familyPh": "Obitelj Hadžić",
+    "tree.familyPh": "Obitelj Horvat",
+    "welcome.title": "Odaberite jezik",
+    "welcome.text": "Stranica i primjer stabla prate jezik koji odaberete.",
+    "lang.bs": "Bosanski",
+    "lang.hr": "Hrvatski",
+    "lang.sr": "Srpski",
+    "lang.en": "English",
     "tree.edit": "Unesite imena",
     "tree.jpeg": "Preuzmi JPEG",
     "tree.pdf": "Preuzmi PDF",
@@ -414,9 +426,15 @@ const translations = {
     "tree.kicker": "Породично стабло",
     "tree.title": "Нацртај своју породицу.",
     "tree.lead":
-      "Унесите имена. Стабло се слаже само. Кад је готово, преузмите га као слику или PDF — за књигу, зид или поклон.",
+      "Кликните име на стаблу и упишите своје. Кад је готово, преузмите слику или PDF.",
     "tree.family": "Име породице",
-    "tree.familyPh": "Породица Хаџић",
+    "tree.familyPh": "Породица Јовановић",
+    "welcome.title": "Изаберите језик",
+    "welcome.text": "Страница и пример стабла прате језик који изаберете.",
+    "lang.bs": "Босански",
+    "lang.hr": "Хрватски",
+    "lang.sr": "Српски",
+    "lang.en": "English",
     "tree.edit": "Унесите имена",
     "tree.jpeg": "Преузми JPEG",
     "tree.pdf": "Преузми PDF",
@@ -561,9 +579,15 @@ const translations = {
     "tree.kicker": "Family tree",
     "tree.title": "Draw your family.",
     "tree.lead":
-      "Type the names. The tree arranges itself. When it is ready, download it as a picture or a PDF — for the book, a wall or a gift.",
+      "Click a name on the tree and type your own. When it is ready, download a picture or a PDF.",
     "tree.family": "Family name",
-    "tree.familyPh": "The Hadzic family",
+    "tree.familyPh": "The Bennett family",
+    "welcome.title": "Choose your language",
+    "welcome.text": "The site and the sample tree follow the language you pick.",
+    "lang.bs": "Bosanski",
+    "lang.hr": "Hrvatski",
+    "lang.sr": "Srpski",
+    "lang.en": "English",
     "tree.edit": "Enter the names",
     "tree.jpeg": "Download JPEG",
     "tree.pdf": "Download PDF",
@@ -653,10 +677,61 @@ function applyLanguage(lang) {
   document.dispatchEvent(new CustomEvent("korijenje-lang", { detail: lang }));
 }
 
+const LANG_FLAGS = {
+  bs: { src: "images/flag-ba.svg", label: "Bosanski" },
+  hr: { src: "images/flag-hr.svg", label: "Hrvatski" },
+  sr: { src: "images/flag-rs.svg", label: "Srpski" },
+  en: { src: "images/flag-gb.svg", label: "English" },
+};
+
+function chooseLanguage(lang) {
+  localStorage.setItem("korijenje-welcome", "1");
+  applyLanguage(lang);
+  hideWelcome();
+}
+
+function hideWelcome() {
+  document.getElementById("welcome")?.remove();
+  document.body.classList.remove("welcome-open");
+}
+
+function showWelcome() {
+  if (document.getElementById("welcome")) return;
+  document.body.classList.add("welcome-open");
+  const overlay = document.createElement("div");
+  overlay.id = "welcome";
+  overlay.className = "welcome";
+  overlay.innerHTML = `
+    <div class="welcome-card">
+      <p class="welcome-brand">Naše korijenje</p>
+      <h1>Odaberite jezik</h1>
+      <p class="welcome-multi">Изаберите језик · Choose your language</p>
+      <div class="welcome-langs">
+        ${["bs", "hr", "sr", "en"]
+          .map(
+            (id) => `<button type="button" data-lang="${id}">
+              <img src="${LANG_FLAGS[id].src}" alt="" width="72" height="48" />
+              <strong>${LANG_FLAGS[id].label}</strong>
+            </button>`
+          )
+          .join("")}
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  overlay.querySelectorAll("button[data-lang]").forEach((button) => {
+    button.addEventListener("click", () => chooseLanguage(button.dataset.lang));
+  });
+}
+
 document.querySelectorAll(".lang button").forEach((button) => {
-  button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+  button.addEventListener("click", () => chooseLanguage(button.dataset.lang));
 });
-applyLanguage(currentLang());
+
+if (localStorage.getItem("korijenje-welcome") === "1") {
+  applyLanguage(currentLang());
+} else {
+  showWelcome();
+}
 
 const header = document.querySelector(".site-header");
 const toggle = document.querySelector(".menu-toggle");

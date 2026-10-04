@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40">
+  <rect width="60" height="40" fill="#171796"/>
+  <rect width="60" height="13.3" fill="#ff0000"/>
+  <rect y="13.3" width="60" height="13.4" fill="#fff"/>
+  <g transform="translate(24 13)">
+    <rect width="3" height="3" fill="#171796"/>
+    <rect x="3" width="3" height="3" fill="#ff0000"/>
+    <rect x="6" width="3" height="3" fill="#171796"/>
+    <rect x="9" width="3" height="3" fill="#ff0000"/>
+    <rect y="3" width="3" height="3" fill="#ff0000"/>
+    <rect x="3" y="3" width="3" height="3" fill="#171796"/>
+    <rect x="6" y="3" width="3" height="3" fill="#ff0000"/>
+    <rect x="9" y="3" width="3" height="3" fill="#171796"/>
+    <rect y="6" width="3" height="3" fill="#171796"/>
+    <rect x="3" y="6" width="3" height="3" fill="#ff0000"/>
+    <rect x="6" y="6" width="3" height="3" fill="#171796"/>
+    <rect x="9" y="6" width="3" height="3" fill="#ff0000"/>
+    <rect y="9" width="3" height="3" fill="#ff0000"/>
+    <rect x="3" y="9" width="3" height="3" fill="#171796"/>
+    <rect x="6" y="9" width="3" height="3" fill="#ff0000"/>
+    <rect x="9" y="9" width="3" height="3" fill="#171796"/>
+  </g>
+</svg>

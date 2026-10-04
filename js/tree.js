@@ -9,19 +9,63 @@ const PEOPLE = [
   ["partner", "tree.role.partner"],
 ];
 
-const EXAMPLE = {
-  family: "Porodica Hadžić",
-  people: {
-    mgm: "Fatima",
-    mgf: "Hasan",
-    pgm: "Ana",
-    pgf: "Ivan",
-    mother: "Amra",
-    father: "Marko",
-    self: "Emina",
-    partner: "Luka",
+const EXAMPLES = {
+  bs: {
+    family: "Porodica Hadžić",
+    people: {
+      mgm: "Fatima",
+      mgf: "Hasan",
+      pgm: "Zejna",
+      pgf: "Ibrahim",
+      mother: "Amra",
+      father: "Emir",
+      self: "Emina",
+      partner: "Adnan",
+    },
+    children: ["Lejla", "Tarik"],
   },
-  children: ["Lana", "Tarik"],
+  hr: {
+    family: "Obitelj Horvat",
+    people: {
+      mgm: "Marija",
+      mgf: "Ivan",
+      pgm: "Ana",
+      pgf: "Josip",
+      mother: "Ivana",
+      father: "Marko",
+      self: "Petra",
+      partner: "Luka",
+    },
+    children: ["Mia", "Filip"],
+  },
+  sr: {
+    family: "Породица Јовановић",
+    people: {
+      mgm: "Милица",
+      mgf: "Никола",
+      pgm: "Јелена",
+      pgf: "Драган",
+      mother: "Ана",
+      father: "Стефан",
+      self: "Марија",
+      partner: "Александар",
+    },
+    children: ["Лазар", "Софија"],
+  },
+  en: {
+    family: "The Bennett family",
+    people: {
+      mgm: "Margaret",
+      mgf: "William",
+      pgm: "Eleanor",
+      pgf: "James",
+      mother: "Claire",
+      father: "Thomas",
+      self: "Emily",
+      partner: "Daniel",
+    },
+    children: ["Oliver", "Sophie"],
+  },
 };
 
 function blankState() {
@@ -41,93 +85,75 @@ function blankState() {
   };
 }
 
-function loadState() {
-  try {
-    const saved = JSON.parse(localStorage.getItem("korijenje-tree") || "null");
-    if (saved && saved.people) return saved;
-  } catch {
-    /* keep defaults */
-  }
-  return structuredClone(EXAMPLE);
+function exampleFor(lang) {
+  return structuredClone(EXAMPLES[lang] || EXAMPLES.bs);
 }
 
-let state = loadState();
+function storageKey(lang) {
+  return `korijenje-tree-${lang}`;
+}
 
-function persist() {
-  localStorage.setItem("korijenje-tree", JSON.stringify(state));
+function loadState(lang) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey(lang)) || "null");
+    if (saved && saved.people) return saved;
+  } catch {
+    /* use example */
+  }
+  return exampleFor(lang);
+}
+
+let activeLang = currentLang();
+let state = loadState(activeLang);
+
+function persist(lang = activeLang) {
+  localStorage.setItem(storageKey(lang), JSON.stringify(state));
 }
 
 function pack() {
   return translations[currentLang()] || translations.bs;
 }
 
-function displayName(value) {
-  return String(value || "").trim() || pack()["tree.empty"];
-}
-
-function card(role, name, extraClass) {
+function cardMarkup(roleKey, name, personAttr, extraClass, removeIndex) {
   const filled = Boolean(String(name || "").trim());
+  const remove = removeIndex === undefined
+    ? ""
+    : `<button type="button" class="leaf-remove" data-remove="${removeIndex}" aria-label="${pack()["tree.remove"]}">×</button>`;
   return `<article class="leaf-card ${extraClass || ""} ${filled ? "is-filled" : "is-empty"}">
-    <span>${pack()[role]}</span>
-    <strong>${displayName(name)}</strong>
+    ${remove}
+    <span>${pack()[roleKey]}</span>
+    <input type="text" maxlength="40" ${personAttr} value="${escapeAttr(name)}" placeholder="${pack()["tree.empty"]}" />
   </article>`;
 }
 
 function renderTree() {
   const title = document.getElementById("tree-family-title");
-  if (title) title.textContent = state.family.trim() || pack()["tree.familyPh"];
+  if (title && document.activeElement !== title) {
+    title.value = state.family;
+    title.placeholder = pack()["tree.familyPh"];
+  }
 
-  const map = {
-    mgm: state.people.mgm,
-    mgf: state.people.mgf,
-    pgm: state.people.pgm,
-    pgf: state.people.pgf,
-    mother: state.people.mother,
-    father: state.people.father,
-    self: state.people.self,
-    partner: state.people.partner,
-  };
-  Object.entries(map).forEach(([key, value]) => {
+  PEOPLE.forEach(([key, role]) => {
     const node = document.querySelector(`[data-leaf="${key}"]`);
     if (!node) return;
-    node.classList.toggle("is-filled", Boolean(String(value || "").trim()));
-    node.classList.toggle("is-empty", !String(value || "").trim());
-    node.querySelector("strong").textContent = displayName(value);
+    const value = state.people[key] || "";
+    node.classList.toggle("is-filled", Boolean(value.trim()));
+    node.classList.toggle("is-empty", !value.trim());
+    const label = node.querySelector("span");
+    if (label) label.textContent = pack()[role];
+    const input = node.querySelector("input");
+    if (input && document.activeElement !== input) input.value = value;
+    if (input) input.placeholder = pack()["tree.empty"];
   });
-
-  const partnerCard = document.querySelector('[data-leaf="partner"]');
-  if (partnerCard) partnerCard.hidden = !String(state.people.partner || "").trim();
 
   const kids = document.getElementById("tree-children");
   if (kids) {
     kids.innerHTML = state.children
-      .map((name, index) => card("tree.role.child", name, `child-${index}`))
+      .map((name, index) =>
+        cardMarkup("tree.role.child", name, `data-child="${index}"`, `child-${index}`, index)
+      )
       .join("");
   }
-}
-
-function renderForm() {
-  const fields = document.getElementById("tree-fields");
-  if (!fields) return;
-  const t = pack();
-  const peopleFields = PEOPLE.map(
-    ([key, role]) => `<label>
-      <span>${t[role]}</span>
-      <input data-person="${key}" type="text" maxlength="40" value="${escapeAttr(state.people[key])}" />
-    </label>`
-  ).join("");
-  const childFields = state.children
-    .map(
-      (name, index) => `<label class="child-field">
-      <span>${t["tree.role.child"]} ${index + 1}</span>
-      <div class="child-row">
-        <input data-child="${index}" type="text" maxlength="40" value="${escapeAttr(name)}" />
-        <button type="button" class="btn-quiet" data-remove="${index}">${t["tree.remove"]}</button>
-      </div>
-    </label>`
-    )
-    .join("");
-  fields.innerHTML = `${peopleFields}${childFields}`;
 }
 
 function escapeAttr(value) {
@@ -138,36 +164,32 @@ function escapeAttr(value) {
 }
 
 function bind() {
-  const family = document.getElementById("family-name");
-  if (family) {
-    family.value = state.family;
-    family.addEventListener("input", () => {
-      state.family = family.value;
-      persist();
-      renderTree();
-    });
-  }
-
-  document.getElementById("tree-fields")?.addEventListener("input", (event) => {
-    const person = event.target.getAttribute("data-person");
-    const child = event.target.getAttribute("data-child");
-    if (person) state.people[person] = event.target.value;
-    if (child !== null && child !== undefined) state.children[Number(child)] = event.target.value;
+  const title = document.getElementById("tree-family-title");
+  title?.addEventListener("input", () => {
+    state.family = title.value;
     persist();
-    renderTree();
   });
 
-  document.getElementById("tree-fields")?.addEventListener("click", (event) => {
+  document.getElementById("tree-art")?.addEventListener("input", (event) => {
+    const person = event.target.getAttribute("data-person");
+    const child = event.target.getAttribute("data-child");
+    if (person) {
+      state.people[person] = event.target.value;
+      event.target.closest(".leaf-card")?.classList.toggle("is-filled", Boolean(event.target.value.trim()));
+      event.target.closest(".leaf-card")?.classList.toggle("is-empty", !event.target.value.trim());
+    }
+    if (child !== null && child !== undefined) {
+      state.children[Number(child)] = event.target.value;
+    }
+    persist();
+  });
+
+  document.getElementById("tree-art")?.addEventListener("click", (event) => {
     const button = event.target.closest("[data-remove]");
     if (!button) return;
     const index = Number(button.getAttribute("data-remove"));
-    if (state.children.length === 1) {
-      state.children = [""];
-    } else {
-      state.children.splice(index, 1);
-    }
+    state.children = state.children.length === 1 ? [""] : state.children.filter((_, i) => i !== index);
     persist();
-    renderForm();
     renderTree();
   });
 
@@ -175,25 +197,18 @@ function bind() {
     if (state.children.length >= 6) return;
     state.children.push("");
     persist();
-    renderForm();
     renderTree();
   });
 
   document.getElementById("load-example")?.addEventListener("click", () => {
-    state = structuredClone(EXAMPLE);
+    state = exampleFor(activeLang);
     persist();
-    const family = document.getElementById("family-name");
-    if (family) family.value = state.family;
-    renderForm();
     renderTree();
   });
 
   document.getElementById("clear-tree")?.addEventListener("click", () => {
     state = blankState();
     persist();
-    const family = document.getElementById("family-name");
-    if (family) family.value = "";
-    renderForm();
     renderTree();
   });
 
@@ -208,14 +223,19 @@ function setStatus(key) {
 
 async function captureTree() {
   const art = document.getElementById("tree-art");
+  art.classList.add("is-exporting");
   if (document.fonts?.ready) await document.fonts.ready;
   if (typeof html2canvas !== "function") throw new Error("html2canvas");
-  return html2canvas(art, {
-    scale: 2,
-    backgroundColor: "#f3eee4",
-    useCORS: true,
-    logging: false,
-  });
+  try {
+    return await html2canvas(art, {
+      scale: 2,
+      backgroundColor: "#f3eee4",
+      useCORS: true,
+      logging: false,
+    });
+  } finally {
+    art.classList.remove("is-exporting");
+  }
 }
 
 async function exportTree(kind) {
@@ -224,7 +244,7 @@ async function exportTree(kind) {
     const canvas = await captureTree();
     const safe = (state.family.trim() || "porodicno-stablo")
       .toLowerCase()
-      .replace(/[^a-z0-9čćžšđ]+/gi, "-")
+      .replace(/[^a-z0-9čćžšđђјљњћџ]+/gi, "-")
       .replace(/^-|-$/g, "");
     if (kind === "jpeg") {
       const link = document.createElement("a");
@@ -253,11 +273,19 @@ async function exportTree(kind) {
   }
 }
 
-document.addEventListener("korijenje-lang", () => {
-  renderForm();
+document.addEventListener("korijenje-lang", (event) => {
+  const next = event.detail;
+  persist(activeLang);
+  activeLang = next;
+  state = loadState(next);
   renderTree();
 });
 
-renderForm();
+PEOPLE.forEach(([key]) => {
+  const node = document.querySelector(`[data-leaf="${key}"]`);
+  const input = node?.querySelector("input");
+  if (input) input.setAttribute("data-person", key);
+});
+
 renderTree();
 bind();

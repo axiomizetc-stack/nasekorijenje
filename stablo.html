@@ -36,10 +36,10 @@
       </nav>
       <div class="header-end">
         <div class="lang" role="group" aria-label="Jezik">
-          <button type="button" data-lang="bs" aria-pressed="true">BS</button>
-          <button type="button" data-lang="hr" aria-pressed="false">HR</button>
-          <button type="button" data-lang="sr" aria-pressed="false">СР</button>
-          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang="bs" title="Bosanski" aria-pressed="true"><img src="images/flag-ba.svg" alt="Bosanski" width="28" height="18" /></button>
+          <button type="button" data-lang="hr" title="Hrvatski" aria-pressed="false"><img src="images/flag-hr.svg" alt="Hrvatski" width="28" height="18" /></button>
+          <button type="button" data-lang="sr" title="Srpski" aria-pressed="false"><img src="images/flag-rs.svg" alt="Srpski" width="28" height="18" /></button>
+          <button type="button" data-lang="en" title="English" aria-pressed="false"><img src="images/flag-gb.svg" alt="English" width="28" height="18" /></button>
         </div>
         <a class="header-cta" href="mama.html#kontakt" data-i18n="nav.order">Naruči knjigu</a>
       </div>
@@ -50,34 +50,24 @@
         <p class="eyebrow" data-i18n="tree.kicker">Porodično stablo</p>
         <h1 data-i18n="tree.title">Nacrtaj svoju porodicu.</h1>
         <p class="lead" data-i18n="tree.lead">
-          Unesite imena. Stablo se slaže samo. Kad je gotovo, preuzmite ga kao sliku ili PDF — za knjigu, zid ili poklon.
+          Kliknite ime na stablu i upišite svoje. Kad je gotovo, preuzmite sliku ili PDF.
         </p>
       </section>
 
       <section class="tree-work">
-        <form class="tree-form" id="tree-form" autocomplete="off">
-          <p class="form-kicker" data-i18n="tree.edit">Unesite imena</p>
-          <label>
-            <span data-i18n="tree.family">Ime porodice</span>
-            <input id="family-name" type="text" maxlength="48" data-i18n-placeholder="tree.familyPh" placeholder="Porodica Hadžić" />
-          </label>
-          <div id="tree-fields"></div>
-          <div class="tree-actions">
-            <button type="button" class="btn btn-line" id="add-child" data-i18n="tree.add">Dodaj dijete</button>
-            <button type="button" class="btn-quiet" id="load-example" data-i18n="tree.example">Učitaj primjer</button>
-            <button type="button" class="btn-quiet" id="clear-tree" data-i18n="tree.clear">Obriši imena</button>
-          </div>
-          <div class="tree-downloads">
-            <button type="button" class="btn btn-dark" id="download-jpeg" data-i18n="tree.jpeg">Preuzmi JPEG</button>
-            <button type="button" class="btn btn-dark" id="download-pdf" data-i18n="tree.pdf">Preuzmi PDF</button>
-          </div>
+        <div class="tree-toolbar">
+          <button type="button" class="btn btn-line" id="add-child" data-i18n="tree.add">Dodaj dijete</button>
+          <button type="button" class="btn-quiet" id="load-example" data-i18n="tree.example">Učitaj primjer</button>
+          <button type="button" class="btn-quiet" id="clear-tree" data-i18n="tree.clear">Obriši imena</button>
+          <button type="button" class="btn btn-dark" id="download-jpeg" data-i18n="tree.jpeg">Preuzmi JPEG</button>
+          <button type="button" class="btn btn-dark" id="download-pdf" data-i18n="tree.pdf">Preuzmi PDF</button>
           <p class="form-status" id="tree-status" role="status"></p>
-        </form>
+        </div>
 
         <div class="tree-scroll">
           <article class="tree-art" id="tree-art">
             <p class="tree-brand" data-i18n="tree.artKicker">Naše korijenje</p>
-            <h2 id="tree-family-title">Porodica Hadžić</h2>
+            <input class="tree-family-title" id="tree-family-title" type="text" maxlength="48" value="Porodica Hadžić" aria-label="Ime porodice" />
             <div class="tree-stage">
               <svg class="tree-bg" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <defs>
@@ -121,21 +111,21 @@
 
               <div class="gen gen-g">
                 <div class="pair">
-                  <article class="leaf-card" data-leaf="mgm"><span data-i18n="tree.role.mgm">Baka · majčina</span><strong>Fatima</strong></article>
-                  <article class="leaf-card" data-leaf="mgf"><span data-i18n="tree.role.mgf">Djed · majčin</span><strong>Hasan</strong></article>
+                  <article class="leaf-card" data-leaf="mgm"><span>Baka · majčina</span><input type="text" maxlength="40" /></article>
+                  <article class="leaf-card" data-leaf="mgf"><span>Djed · majčin</span><input type="text" maxlength="40" /></article>
                 </div>
                 <div class="pair">
-                  <article class="leaf-card" data-leaf="pgm"><span data-i18n="tree.role.pgm">Baka · očeva</span><strong>Ana</strong></article>
-                  <article class="leaf-card" data-leaf="pgf"><span data-i18n="tree.role.pgf">Djed · očev</span><strong>Ivan</strong></article>
+                  <article class="leaf-card" data-leaf="pgm"><span>Baka · očeva</span><input type="text" maxlength="40" /></article>
+                  <article class="leaf-card" data-leaf="pgf"><span>Djed · očev</span><input type="text" maxlength="40" /></article>
                 </div>
               </div>
               <div class="gen gen-p">
-                <article class="leaf-card leaf-lg" data-leaf="mother"><span data-i18n="tree.role.mother">Mama</span><strong>Amra</strong></article>
-                <article class="leaf-card leaf-lg" data-leaf="father"><span data-i18n="tree.role.father">Tata</span><strong>Marko</strong></article>
+                <article class="leaf-card leaf-lg" data-leaf="mother"><span>Mama</span><input type="text" maxlength="40" /></article>
+                <article class="leaf-card leaf-lg" data-leaf="father"><span>Tata</span><input type="text" maxlength="40" /></article>
               </div>
               <div class="gen gen-s">
-                <article class="leaf-card leaf-hero" data-leaf="self"><span data-i18n="tree.role.self">Ja</span><strong>Emina</strong></article>
-                <article class="leaf-card leaf-hero" data-leaf="partner"><span data-i18n="tree.role.partner">Partner / partnerica</span><strong>Luka</strong></article>
+                <article class="leaf-card leaf-hero" data-leaf="self"><span>Ja</span><input type="text" maxlength="40" /></article>
+                <article class="leaf-card leaf-hero" data-leaf="partner"><span>Partner / partnerica</span><input type="text" maxlength="40" /></article>
               </div>
               <div class="gen gen-c" id="tree-children"></div>
             </div>
