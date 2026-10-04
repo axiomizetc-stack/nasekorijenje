@@ -1,4 +1,12 @@
 const PEOPLE = [
+  ["gggmm", "tree.role.gggmm"],
+  ["gggmf", "tree.role.gggmf"],
+  ["gggpm", "tree.role.gggpm"],
+  ["gggpf", "tree.role.gggpf"],
+  ["ggmm", "tree.role.ggmm"],
+  ["ggmf", "tree.role.ggmf"],
+  ["ggpm", "tree.role.ggpm"],
+  ["ggpf", "tree.role.ggpf"],
   ["mgm", "tree.role.mgm"],
   ["mgf", "tree.role.mgf"],
   ["pgm", "tree.role.pgm"],
@@ -9,10 +17,38 @@ const PEOPLE = [
   ["partner", "tree.role.partner"],
 ];
 
+const EMPTY_PEOPLE = {
+  gggmm: "",
+  gggmf: "",
+  gggpm: "",
+  gggpf: "",
+  ggmm: "",
+  ggmf: "",
+  ggpm: "",
+  ggpf: "",
+  mgm: "",
+  mgf: "",
+  pgm: "",
+  pgf: "",
+  mother: "",
+  father: "",
+  self: "",
+  partner: "",
+};
+
 const EXAMPLES = {
   bs: {
     family: "Porodica Hadžić",
     people: {
+      ...EMPTY_PEOPLE,
+      gggmm: "Ajša",
+      gggmf: "Sulejman",
+      gggpm: "Mejra",
+      gggpf: "Alija",
+      ggmm: "Šefika",
+      ggmf: "Omer",
+      ggpm: "Hatidža",
+      ggpf: "Ahmed",
       mgm: "Fatima",
       mgf: "Hasan",
       pgm: "Zejna",
@@ -23,10 +59,20 @@ const EXAMPLES = {
       partner: "Adnan",
     },
     children: ["Lejla", "Tarik"],
+    showPrapra: false,
   },
   hr: {
     family: "Obitelj Horvat",
     people: {
+      ...EMPTY_PEOPLE,
+      gggmm: "Manda",
+      gggmf: "Mate",
+      gggpm: "Roza",
+      gggpf: "Petar",
+      ggmm: "Kata",
+      ggmf: "Stjepan",
+      ggpm: "Iva",
+      ggpf: "Franjo",
       mgm: "Marija",
       mgf: "Ivan",
       pgm: "Ana",
@@ -37,10 +83,20 @@ const EXAMPLES = {
       partner: "Luka",
     },
     children: ["Mia", "Filip"],
+    showPrapra: false,
   },
   sr: {
     family: "Породица Јовановић",
     people: {
+      ...EMPTY_PEOPLE,
+      gggmm: "Зора",
+      gggmf: "Добривоје",
+      gggpm: "Радмила",
+      gggpf: "Вукашин",
+      ggmm: "Љубица",
+      ggmf: "Живорад",
+      ggpm: "Нада",
+      ggpf: "Милош",
       mgm: "Милица",
       mgf: "Никола",
       pgm: "Јелена",
@@ -51,10 +107,20 @@ const EXAMPLES = {
       partner: "Александар",
     },
     children: ["Лазар", "Софија"],
+    showPrapra: false,
   },
   en: {
     family: "The Bennett family",
     people: {
+      ...EMPTY_PEOPLE,
+      gggmm: "Edith",
+      gggmf: "Henry",
+      gggpm: "Florence",
+      gggpf: "Edward",
+      ggmm: "Rose",
+      ggmf: "Arthur",
+      ggpm: "Helen",
+      ggpf: "George",
       mgm: "Margaret",
       mgf: "William",
       pgm: "Eleanor",
@@ -65,28 +131,32 @@ const EXAMPLES = {
       partner: "Daniel",
     },
     children: ["Oliver", "Sophie"],
+    showPrapra: false,
   },
 };
 
 function blankState() {
   return {
     family: "",
-    people: {
-      mgm: "",
-      mgf: "",
-      pgm: "",
-      pgf: "",
-      mother: "",
-      father: "",
-      self: "",
-      partner: "",
-    },
+    people: { ...EMPTY_PEOPLE },
     children: [""],
+    showPrapra: false,
   };
 }
 
 function exampleFor(lang) {
   return structuredClone(EXAMPLES[lang] || EXAMPLES.bs);
+}
+
+function normalizeState(raw, lang) {
+  const example = exampleFor(lang);
+  const people = { ...example.people, ...(raw.people || {}) };
+  return {
+    family: raw.family ?? example.family,
+    people,
+    children: Array.isArray(raw.children) && raw.children.length ? raw.children : example.children,
+    showPrapra: Boolean(raw.showPrapra),
+  };
 }
 
 function storageKey(lang) {
@@ -96,7 +166,7 @@ function storageKey(lang) {
 function loadState(lang) {
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey(lang)) || "null");
-    if (saved && saved.people) return saved;
+    if (saved && saved.people) return normalizeState(saved, lang);
   } catch {
     /* use example */
   }
@@ -127,6 +197,16 @@ function cardMarkup(roleKey, name, personAttr, extraClass, removeIndex) {
 }
 
 function renderTree() {
+  const art = document.getElementById("tree-art");
+  art?.classList.toggle("has-prapra", state.showPrapra);
+  const prapra = document.getElementById("tree-prapra");
+  if (prapra) prapra.hidden = !state.showPrapra;
+
+  const toggle = document.getElementById("toggle-prapra");
+  if (toggle) {
+    toggle.textContent = pack()[state.showPrapra ? "tree.removePrapra" : "tree.addPrapra"];
+  }
+
   const title = document.getElementById("tree-family-title");
   if (title && document.activeElement !== title) {
     title.value = state.family;
@@ -143,7 +223,10 @@ function renderTree() {
     if (label) label.textContent = pack()[role];
     const input = node.querySelector("input");
     if (input && document.activeElement !== input) input.value = value;
-    if (input) input.placeholder = pack()["tree.empty"];
+    if (input) {
+      input.setAttribute("data-person", key);
+      input.placeholder = pack()["tree.empty"];
+    }
   });
 
   const kids = document.getElementById("tree-children");
@@ -200,6 +283,18 @@ function bind() {
     renderTree();
   });
 
+  document.getElementById("toggle-prapra")?.addEventListener("click", () => {
+    state.showPrapra = !state.showPrapra;
+    if (state.showPrapra) {
+      const example = exampleFor(activeLang);
+      ["gggmm", "gggmf", "gggpm", "gggpf"].forEach((key) => {
+        if (!String(state.people[key] || "").trim()) state.people[key] = example.people[key];
+      });
+    }
+    persist();
+    renderTree();
+  });
+
   document.getElementById("load-example")?.addEventListener("click", () => {
     state = exampleFor(activeLang);
     persist();
@@ -221,6 +316,17 @@ function setStatus(key) {
   if (status) status.textContent = pack()[key] || "";
 }
 
+function freezeInputs(root) {
+  root.querySelectorAll("input").forEach((input) => {
+    const isTitle = input.classList.contains("tree-family-title");
+    const node = document.createElement(isTitle ? "h2" : "strong");
+    node.className = input.className;
+    node.textContent = input.value.trim() || input.placeholder || "";
+    if (isTitle) node.classList.add("tree-family-title");
+    input.replaceWith(node);
+  });
+}
+
 async function captureTree() {
   const art = document.getElementById("tree-art");
   art.classList.add("is-exporting");
@@ -232,6 +338,10 @@ async function captureTree() {
       backgroundColor: "#f3eee4",
       useCORS: true,
       logging: false,
+      onclone(clonedDoc) {
+        const clone = clonedDoc.getElementById("tree-art") || clonedDoc.body;
+        freezeInputs(clone);
+      },
     });
   } finally {
     art.classList.remove("is-exporting");
@@ -279,12 +389,6 @@ document.addEventListener("korijenje-lang", (event) => {
   activeLang = next;
   state = loadState(next);
   renderTree();
-});
-
-PEOPLE.forEach(([key]) => {
-  const node = document.querySelector(`[data-leaf="${key}"]`);
-  const input = node?.querySelector("input");
-  if (input) input.setAttribute("data-person", key);
 });
 
 renderTree();

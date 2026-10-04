@@ -57,6 +57,7 @@
       <section class="tree-work">
         <div class="tree-toolbar">
           <button type="button" class="btn btn-line" id="add-child" data-i18n="tree.add">Dodaj dijete</button>
+          <button type="button" class="btn btn-line" id="toggle-prapra" data-i18n="tree.addPrapra">Dodaj prapra nenu i prapra dedu</button>
           <button type="button" class="btn-quiet" id="load-example" data-i18n="tree.example">Učitaj primjer</button>
           <button type="button" class="btn-quiet" id="clear-tree" data-i18n="tree.clear">Obriši imena</button>
           <button type="button" class="btn btn-dark" id="download-jpeg" data-i18n="tree.jpeg">Preuzmi JPEG</button>
@@ -69,7 +70,7 @@
             <p class="tree-brand" data-i18n="tree.artKicker">Naše korijenje</p>
             <input class="tree-family-title" id="tree-family-title" type="text" maxlength="48" value="Porodica Hadžić" aria-label="Ime porodice" />
             <div class="tree-stage">
-              <svg class="tree-bg" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg class="tree-bg" viewBox="0 0 1200 980" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <defs>
                   <linearGradient id="bark" x1="0" x2="0" y1="0" y2="1">
                     <stop offset="0%" stop-color="#5b4634" />
@@ -80,14 +81,16 @@
                     <stop offset="100%" stop-color="#6d8a6f" />
                   </linearGradient>
                 </defs>
-                <ellipse cx="600" cy="720" rx="220" ry="28" fill="#d8c9ae" />
-                <path d="M600 710c-18-90-22-190-16-290 40 8 48 70 52 140 8 82 6 130-8 150z" fill="url(#bark)" />
-                <path d="M584 430c-90-40-180-38-250-8" fill="none" stroke="#6a553d" stroke-width="10" stroke-linecap="round" />
-                <path d="M616 430c90-40 180-38 250-8" fill="none" stroke="#6a553d" stroke-width="10" stroke-linecap="round" />
-                <path d="M360 410c-70-70-90-150-70-210" fill="none" stroke="#6a553d" stroke-width="7" stroke-linecap="round" />
-                <path d="M840 410c70-70 90-150 70-210" fill="none" stroke="#6a553d" stroke-width="7" stroke-linecap="round" />
-                <path d="M600 500c-40 40-70 90-80 140" fill="none" stroke="#6a553d" stroke-width="6" stroke-linecap="round" />
-                <path d="M600 500c40 40 70 90 80 140" fill="none" stroke="#6a553d" stroke-width="6" stroke-linecap="round" />
+                <ellipse cx="600" cy="940" rx="220" ry="28" fill="#d8c9ae" />
+                <path d="M600 930c-18-90-22-250-16-390 40 8 48 90 52 180 8 102 6 170-8 210z" fill="url(#bark)" />
+                <path d="M584 560c-90-40-180-38-250-8" fill="none" stroke="#6a553d" stroke-width="10" stroke-linecap="round" />
+                <path d="M616 560c90-40 180-38 250-8" fill="none" stroke="#6a553d" stroke-width="10" stroke-linecap="round" />
+                <path d="M360 530c-70-70-90-150-70-230" fill="none" stroke="#6a553d" stroke-width="7" stroke-linecap="round" />
+                <path d="M840 530c70-70 90-150 70-230" fill="none" stroke="#6a553d" stroke-width="7" stroke-linecap="round" />
+                <path d="M280 280c-40-50-50-90-40-140" fill="none" stroke="#6a553d" stroke-width="5" stroke-linecap="round" />
+                <path d="M920 280c40-50 50-90 40-140" fill="none" stroke="#6a553d" stroke-width="5" stroke-linecap="round" />
+                <path d="M600 640c-40 40-70 90-80 160" fill="none" stroke="#6a553d" stroke-width="6" stroke-linecap="round" />
+                <path d="M600 640c40 40 70 90 80 160" fill="none" stroke="#6a553d" stroke-width="6" stroke-linecap="round" />
                 <g fill="url(#canopy)" opacity="0.35">
                   <ellipse cx="250" cy="150" rx="70" ry="28" />
                   <ellipse cx="430" cy="120" rx="80" ry="30" />
@@ -109,6 +112,26 @@
                 </g>
               </svg>
 
+              <div class="gen gen-ggg" id="tree-prapra" hidden>
+                <div class="pair">
+                  <article class="leaf-card leaf-sm" data-leaf="gggmm"><span>Prapra nena · majčina</span><input type="text" maxlength="40" /></article>
+                  <article class="leaf-card leaf-sm" data-leaf="gggmf"><span>Prapra dedo · majčin</span><input type="text" maxlength="40" /></article>
+                </div>
+                <div class="pair">
+                  <article class="leaf-card leaf-sm" data-leaf="gggpm"><span>Prapra nena · očeva</span><input type="text" maxlength="40" /></article>
+                  <article class="leaf-card leaf-sm" data-leaf="gggpf"><span>Prapra dedo · očev</span><input type="text" maxlength="40" /></article>
+                </div>
+              </div>
+              <div class="gen gen-gg">
+                <div class="pair">
+                  <article class="leaf-card leaf-sm" data-leaf="ggmm"><span>Pranena · majčina</span><input type="text" maxlength="40" /></article>
+                  <article class="leaf-card leaf-sm" data-leaf="ggmf"><span>Pradedo · majčin</span><input type="text" maxlength="40" /></article>
+                </div>
+                <div class="pair">
+                  <article class="leaf-card leaf-sm" data-leaf="ggpm"><span>Pranena · očeva</span><input type="text" maxlength="40" /></article>
+                  <article class="leaf-card leaf-sm" data-leaf="ggpf"><span>Pradedo · očev</span><input type="text" maxlength="40" /></article>
+                </div>
+              </div>
               <div class="gen gen-g">
                 <div class="pair">
                   <article class="leaf-card" data-leaf="mgm"><span>Baka · majčina</span><input type="text" maxlength="40" /></article>

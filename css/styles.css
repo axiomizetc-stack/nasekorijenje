@@ -389,14 +389,15 @@ body.welcome-open { overflow: hidden; }
 .tree-scroll { overflow-x: auto; padding-bottom: 8px; }
 .tree-art {
   width: 1200px;
-  min-height: 900px;
-  padding: 28px 32px 20px;
+  min-height: 1040px;
+  padding: 36px 32px 24px;
   border-radius: 28px;
   background:
     radial-gradient(circle at 50% 20%, #fffaf1, #f3eee4 70%);
   box-shadow: var(--shadow);
   color: var(--ink);
 }
+.tree-art.has-prapra { min-height: 1180px; }
 .tree-brand {
   text-align: center;
   letter-spacing: 0.18em;
@@ -413,10 +414,14 @@ body.welcome-open { overflow: hidden; }
   text-align: center;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 3rem;
-  margin: 6px 0 8px;
+  line-height: 1.15;
+  min-height: 4.2rem;
+  margin: 10px 0 16px;
   color: var(--ink);
 }
-.tree-stage { position: relative; height: 760px; }
+h2.tree-family-title { font-weight: 500; }
+.tree-stage { position: relative; height: 900px; }
+.tree-art.has-prapra .tree-stage { height: 1040px; }
 .tree-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .gen {
   position: relative;
@@ -424,8 +429,9 @@ body.welcome-open { overflow: hidden; }
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 170px;
+  height: 148px;
 }
+.gen-gg, .gen-ggg { height: 132px; }
 .pair { display: flex; gap: 16px; }
 .leaf-card {
   position: relative;
@@ -481,6 +487,8 @@ body.welcome-open { overflow: hidden; }
   font-weight: 600;
 }
 .leaf-card.is-empty input { color: #b7b1a6; font-style: italic; }
+.leaf-sm { min-width: 132px; max-width: 168px; padding: 8px 10px 10px; }
+.leaf-sm input, .leaf-sm strong { font-size: 1.2rem; }
 .leaf-lg { min-width: 180px; }
 .leaf-hero {
   min-width: 200px;
