@@ -55,11 +55,13 @@ p { margin: 0; }
   background: transparent;
   font: inherit;
   font-weight: 700;
-  padding: 6px 10px;
+  padding: 6px 8px;
+  min-width: 36px;
   border-radius: 999px;
   cursor: pointer;
   color: var(--muted);
 }
+.langs-note { margin-top: 12px; color: var(--green); font-weight: 650; }
 .lang button[aria-pressed="true"] { background: var(--ink); color: #fff; }
 .header-cta, .btn {
   text-decoration: none;
@@ -434,4 +436,5 @@ footer > p { margin-top: 22px; font-family: "Cormorant Garamond", Georgia, serif
   }
   .site-header.is-open #nav { display: flex; }
   .header-cta { display: none; }
+  .lang button { padding: 6px 6px; min-width: 32px; font-size: 0.78rem; }
 }

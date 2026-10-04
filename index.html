@@ -35,8 +35,10 @@
         <a href="index.html#kontakt" data-i18n="nav.contact">Kontakt</a>
       </nav>
       <div class="header-end">
-        <div class="lang" role="group" aria-label="Language">
+        <div class="lang" role="group" aria-label="Jezik">
           <button type="button" data-lang="bs" aria-pressed="true">BS</button>
+          <button type="button" data-lang="hr" aria-pressed="false">HR</button>
+          <button type="button" data-lang="sr" aria-pressed="false">СР</button>
           <button type="button" data-lang="en" aria-pressed="false">EN</button>
         </div>
         <a class="header-cta" href="#kontakt" data-i18n="nav.order">Naruči knjigu</a>
@@ -51,6 +53,7 @@
           <p class="lead" data-i18n="hero.lead">
             Prva knjiga je spremna: Mama, ispričaj mi priču. Poklonite mami prostor da ispiše svoj život — od djetinjstva do poruke djeci.
           </p>
+          <p class="langs-note" data-i18n="hero.langs">Knjiga izlazi na bosanskom, hrvatskom i srpskom (ćirilica).</p>
           <div class="actions">
             <a class="btn btn-dark" href="mama.html" data-i18n="hero.primary">Naruči Maminu knjigu</a>
             <a class="btn btn-line" href="mama.html#primjeri" data-i18n="hero.secondary">Pogledaj primjere</a>
@@ -143,6 +146,7 @@
           <p class="eyebrow" data-i18n="col.kicker">Kolekcija</p>
           <h2 data-i18n="col.title">Tri knjige, jedan brend.</h2>
           <p data-i18n="col.text">Prvo izdanje je Mama. Tata i porodična knjiga dolaze zatim. Ista linija, različite korice.</p>
+          <p data-i18n="col.langs">Svaka knjiga: bosanski, hrvatski ili srpski na ćirilici.</p>
         </div>
         <div class="col-grid">
           <article class="featured">
@@ -190,8 +194,16 @@
             <span data-i18n="form.book">Knjiga</span>
             <select name="book">
               <option value="mama" selected data-i18n="form.mama">Mama, ispričaj mi priču · 24,90 €</option>
-              <option value="korijenje">Naše korijenje · 24,90 €</option>
+              <option value="korijenje" data-i18n="form.korijenje">Naše korijenje · 24,90 €</option>
               <option value="tata" data-i18n="form.tata">Tata, ispričaj mi svoju priču (lista čekanja)</option>
+            </select>
+          </label>
+          <label class="full">
+            <span data-i18n="form.edition">Jezik knjige</span>
+            <select name="edition">
+              <option value="bs" selected data-i18n="form.edition.bs">Bosanski</option>
+              <option value="hr" data-i18n="form.edition.hr">Hrvatski</option>
+              <option value="sr" data-i18n="form.edition.sr">Srpski (ćirilica)</option>
             </select>
           </label>
           <label class="full">
