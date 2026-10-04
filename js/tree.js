@@ -64,7 +64,7 @@ const EXAMPLES = {
       self: "Emina",
       partner: "Adnan",
     },
-    siblings: ["Selma"],
+    siblings: [],
     children: ["Lejla", "Tarik"],
     showPrapra: false,
   },
@@ -91,7 +91,7 @@ const EXAMPLES = {
       self: "Petra",
       partner: "Luka",
     },
-    siblings: ["Ante"],
+    siblings: [],
     children: ["Mia", "Filip"],
     showPrapra: false,
   },
@@ -118,7 +118,7 @@ const EXAMPLES = {
       self: "Марија",
       partner: "Александар",
     },
-    siblings: ["Никола"],
+    siblings: [],
     children: ["Лазар", "Софија"],
     showPrapra: false,
   },
@@ -145,7 +145,7 @@ const EXAMPLES = {
       self: "Emily",
       partner: "Daniel",
     },
-    siblings: ["James"],
+    siblings: [],
     children: ["Oliver", "Sophie"],
     showPrapra: false,
   },
@@ -165,14 +165,25 @@ function exampleFor(lang) {
   return structuredClone(EXAMPLES[lang] || EXAMPLES.bs);
 }
 
+const DEMO_SIBLINGS = { bs: "Selma", hr: "Ante", sr: "Никола", en: "James" };
+
 function normalizeState(raw, lang) {
   const example = exampleFor(lang);
   const people = { ...example.people, ...(raw.people || {}) };
+  let siblings = Array.isArray(raw.siblings) ? raw.siblings.filter((name) => String(name || "").trim()) : [];
+  const demoSibling = DEMO_SIBLINGS[lang];
+  if (
+    siblings.length === 1 &&
+    siblings[0] === demoSibling &&
+    people.self === example.people.self
+  ) {
+    siblings = [];
+  }
   return {
     family: raw.family ?? example.family,
     people,
     children: Array.isArray(raw.children) && raw.children.length ? raw.children : example.children,
-    siblings: Array.isArray(raw.siblings) ? raw.siblings : [],
+    siblings,
     showPrapra: raw.showPrapra === true,
   };
 }
@@ -258,6 +269,7 @@ function renderTree() {
         cardMarkup("tree.role.sibling", name, `data-sibling="${index}"`, `sib-${index}`, "sib", index)
       )
       .join("");
+    sibs.hidden = state.siblings.length === 0;
   }
 
   const kids = document.getElementById("tree-children");
@@ -349,6 +361,7 @@ function bind() {
   document.getElementById("load-example")?.addEventListener("click", () => {
     state = exampleFor(activeLang);
     state.showPrapra = false;
+    state.siblings = [];
     persist();
     renderTree();
   });

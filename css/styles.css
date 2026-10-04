@@ -450,6 +450,7 @@ h2.tree-family-title { font-weight: 500; }
 .gen-p { gap: 72px; }
 .gen-s { gap: 14px; justify-content: center; flex-wrap: wrap; }
 .sibs { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.sibs[hidden] { display: none !important; }
 .pair { display: flex; gap: 16px; }
 .leaf-card {
   position: relative;
