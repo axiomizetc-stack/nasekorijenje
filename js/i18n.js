@@ -89,6 +89,7 @@ const translations = {
     "foot.2": "Dostava širom BiH, Hrvatske i Srbije",
     "foot.3": "Plaćanje po dogovoru",
     "foot.4": "Podržite domaći brend",
+    "built.by": "Napravio Alpha IT Solutions",
     "mama.kicker": "Prvo izdanje · Spremno za narudžbu",
     "mama.title": "Mama, ispričaj mi priču.",
     "mama.lead":
@@ -256,6 +257,7 @@ const translations = {
     "foot.2": "Dostava diljem BiH, Hrvatske i Srbije",
     "foot.3": "Plaćanje po dogovoru",
     "foot.4": "Podržite domaći brend",
+    "built.by": "Izradio Alpha IT Solutions",
     "mama.kicker": "Prvo izdanje · Spremno za narudžbu",
     "mama.title": "Mama, ispričaj mi priču.",
     "mama.lead":
@@ -423,6 +425,7 @@ const translations = {
     "foot.2": "Достава широм БиХ, Хрватске и Србије",
     "foot.3": "Плаћање по договору",
     "foot.4": "Подржите домаћи бренд",
+    "built.by": "Направио Alpha IT Solutions",
     "mama.kicker": "Прво издање · Спремно за наруџбу",
     "mama.title": "Мама, испричај ми причу.",
     "mama.lead":
@@ -590,6 +593,7 @@ const translations = {
     "foot.2": "Delivery across Bosnia, Croatia and Serbia",
     "foot.3": "Payment by arrangement",
     "foot.4": "Support a local brand",
+    "built.by": "Built by Alpha IT Solutions",
     "mama.kicker": "First edition · Ready to order",
     "mama.title": "Mum, tell me a story.",
     "mama.lead":
